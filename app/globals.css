@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+/* ── Design tokens (mirrors WIYM Flutter app) ───────────────────────────── */
+@theme {
+  /* Surfaces */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-elevated: #eef2ff;
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+
+  /* Ink */
+  --color-ink: #0f172a;
+  --color-ink-dim: #475569;
+  --color-ink-faint: #94a3b8;
+  --color-ink-ghost: #cbd5e1;
+
+  /* Brand — Electric Indigo */
+  --color-indigo: #6366f1;
+  --color-indigo-soft: #818cf8;
+  --color-indigo-dark: #4f46e5;
+  --color-indigo-tint: #eef2ff;
+
+  /* Secondary — Emerald */
+  --color-emerald: #10b981;
+  --color-emerald-soft: #34d399;
+  --color-emerald-tint: #ecfdf5;
+
+  /* Tertiary — Amber */
+  --color-amber: #f59e0b;
+  --color-amber-soft: #fbbf24;
+  --color-amber-tint: #fef3c7;
+
+  /* Status */
+  --color-rose: #ef4444;
+  --color-rose-tint: #fee2e2;
+
+  /* Radius — matches AppRadius from the app */
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Type */
+  --font-display: var(--font-space), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+
+  /* Shadow tokens — mirror AppShadows */
+  --shadow-card: 0 4px 12px 0 rgba(0, 0, 0, 0.05),
+    0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-elevated: 0 8px 24px 0 rgba(99, 102, 241, 0.12),
+    0 2px 4px 0 rgba(15, 23, 42, 0.04);
+  --shadow-indigo-glow: 0 20px 60px -10px rgba(99, 102, 241, 0.35);
+}
+
+/* ── Base ───────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-indigo);
+  color: #fff;
+}
+
+/* ── Type utilities ─────────────────────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.font-display-semi {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-indigo-dark);
+  padding: 0.375rem 0.75rem;
+  background: var(--color-indigo-tint);
+  border-radius: 999px;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--color-indigo);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-elevated);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--color-indigo-dark);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 15px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  border-color: var(--color-indigo);
+  color: var(--color-indigo-dark);
+  transform: translateY(-1px);
+}
+
+/* ── App store badges ───────────────────────────────────────────────────── */
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1.2rem;
+  background: var(--color-ink);
+  color: #ffffff;
+  border-radius: 14px;
+  transition: transform 0.2s ease, background 0.2s ease;
+  cursor: pointer;
+}
+.store-badge:hover {
+  transform: translateY(-1px);
+  background: #1e293b;
+}
+.store-badge .store-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  line-height: 1;
+}
+.store-badge .store-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.card-tinted {
+  background: var(--color-indigo-tint);
+  border: 1px solid color-mix(in srgb, var(--color-indigo) 18%, transparent);
+  border-radius: var(--radius-lg);
+}
+
+/* ── Halo / decorative ──────────────────────────────────────────────────── */
+.halo-indigo {
+  background: radial-gradient(
+    60% 60% at 50% 50%,
+    color-mix(in srgb, var(--color-indigo) 22%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(40px);
+}
+
+.halo-emerald {
+  background: radial-gradient(
+    60% 60% at 50% 50%,
+    color-mix(in srgb, var(--color-emerald) 20%, transparent) 0%,
+    transparent 70%
+  );
+  filter: blur(40px);
+}
+
+/* Dotted grid background */
+.dot-grid {
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--color-ink) 12%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Soft section divider */
+.section-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border-strong) 30%,
+    var(--color-border-strong) 70%,
+    transparent
+  );
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────── */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-emerald) 60%, transparent); }
+  70% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-emerald) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-emerald) 0%, transparent); }
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.anim-rise { animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade { animation: fade 1s ease-out both; }
+.live-dot { animation: pulse-ring 2.4s ease-out infinite; }
+.float-y { animation: float-y 5.5s ease-in-out infinite; }
+.float-y-slow { animation: float-y 7.5s ease-in-out infinite 0.5s; }
+
+/* ── Status pills ───────────────────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.625rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+.pill-emerald {
+  background: var(--color-emerald-tint);
+  color: #047857;
+  border-color: color-mix(in srgb, var(--color-emerald) 35%, transparent);
+}
+.pill-indigo {
+  background: var(--color-indigo-tint);
+  color: var(--color-indigo-dark);
+  border-color: color-mix(in srgb, var(--color-indigo) 30%, transparent);
+}
+.pill-amber {
+  background: var(--color-amber-tint);
+  color: #92400e;
+  border-color: color-mix(in srgb, var(--color-amber) 40%, transparent);
+}
