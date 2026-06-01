@@ -26,20 +26,20 @@ export function Footer() {
           <div className="col-span-6 md:col-span-2">
             <div className="label mb-4">Product</div>
             <ul className="space-y-2 text-[14px] text-[color:var(--color-ink-dim)]">
-              <li><a href="#how" className="hover:text-[color:var(--color-ink)]">How it works</a></li>
-              <li><a href="#features" className="hover:text-[color:var(--color-ink)]">Features</a></li>
-              <li><a href="#screens" className="hover:text-[color:var(--color-ink)]">App tour</a></li>
-              <li><a href="#download" className="hover:text-[color:var(--color-ink)]">Download</a></li>
+              <li><a href="/#how" className="hover:text-[color:var(--color-ink)]">How it works</a></li>
+              <li><a href="/#features" className="hover:text-[color:var(--color-ink)]">Features</a></li>
+              <li><a href="/#screens" className="hover:text-[color:var(--color-ink)]">App tour</a></li>
+              <li><a href="/#download" className="hover:text-[color:var(--color-ink)]">Download</a></li>
             </ul>
           </div>
 
           <div className="col-span-6 md:col-span-2">
-            <div className="label mb-4">Join</div>
+            <div className="label mb-4">Support</div>
             <ul className="space-y-2 text-[14px] text-[color:var(--color-ink-dim)]">
-              <li><a href="#mechanics" className="hover:text-[color:var(--color-ink)]">For mechanics</a></li>
-              <li><a href="#mechanics" className="hover:text-[color:var(--color-ink)]">For workshops</a></li>
-              <li><a href="mailto:hello@whoisyourmechanic.com" className="hover:text-[color:var(--color-ink)]">Press</a></li>
-              <li><a href="mailto:partners@whoisyourmechanic.com" className="hover:text-[color:var(--color-ink)]">Partnerships</a></li>
+              <li><a href="/support" className="hover:text-[color:var(--color-ink)]">Help &amp; contact</a></li>
+              <li><a href="/privacy" className="hover:text-[color:var(--color-ink)]">Privacy Policy</a></li>
+              <li><a href="/terms" className="hover:text-[color:var(--color-ink)]">Terms of Service</a></li>
+              <li><a href="/delete-account" className="hover:text-[color:var(--color-ink)]">Delete account</a></li>
             </ul>
           </div>
 
@@ -47,7 +47,7 @@ export function Footer() {
             <div className="label mb-4">Contact</div>
             <ul className="space-y-2 text-[14px] text-[color:var(--color-ink-dim)] font-mono">
               <li>Kathmandu, Nepal</li>
-              <li>hello@whoisyourmechanic.com</li>
+              <li><a href="mailto:support@whozyo.com" className="hover:text-[color:var(--color-ink)]">support@whozyo.com</a></li>
               <li className="flex items-center gap-2 text-[color:var(--color-emerald)]">
                 <span className="size-1.5 rounded-full bg-[color:var(--color-emerald)] live-dot" />
                 System operational
@@ -61,11 +61,11 @@ export function Footer() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[12px] text-[color:var(--color-ink-faint)]">
           <span>© 2026 WhoIsYourMechanic. All rights reserved.</span>
           <span className="flex items-center gap-4">
-            <a href="#" className="hover:text-[color:var(--color-ink)]">Privacy</a>
+            <a href="/support" className="hover:text-[color:var(--color-ink)]">Support</a>
             <span className="opacity-50">·</span>
-            <a href="#" className="hover:text-[color:var(--color-ink)]">Terms</a>
+            <a href="/privacy" className="hover:text-[color:var(--color-ink)]">Privacy</a>
             <span className="opacity-50">·</span>
-            <a href="#" className="hover:text-[color:var(--color-ink)]">Trust &amp; Safety</a>
+            <a href="/terms" className="hover:text-[color:var(--color-ink)]">Terms</a>
           </span>
         </div>
       </div>

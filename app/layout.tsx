@@ -27,12 +27,12 @@ export const metadata: Metadata = {
   title: "WhoIsYourMechanic — Know who fixes your vehicle.",
   description:
     "Find verified mechanics, watch the work, pay through the app. Built for Nepal — for clients, mechanics, and service centres.",
-  metadataBase: new URL("https://whoisyourmechanic.com"),
+  metadataBase: new URL("https://whozyo.com"),
   openGraph: {
     title: "WhoIsYourMechanic — Know who fixes your vehicle.",
     description:
       "Find verified mechanics, watch the work, pay through the app.",
-    url: "https://whoisyourmechanic.com",
+    url: "https://whozyo.com",
     siteName: "WhoIsYourMechanic",
     type: "website",
   },
