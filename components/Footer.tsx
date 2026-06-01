@@ -28,7 +28,7 @@ export function Footer() {
             <ul className="space-y-2 text-[14px] text-[color:var(--color-ink-dim)]">
               <li><a href="/#how" className="hover:text-[color:var(--color-ink)]">How it works</a></li>
               <li><a href="/#features" className="hover:text-[color:var(--color-ink)]">Features</a></li>
-              <li><a href="/#screens" className="hover:text-[color:var(--color-ink)]">App tour</a></li>
+              <li><a href="/service-centers" className="hover:text-[color:var(--color-ink)]">Service centers</a></li>
               <li><a href="/#download" className="hover:text-[color:var(--color-ink)]">Download</a></li>
             </ul>
           </div>

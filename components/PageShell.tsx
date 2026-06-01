@@ -13,12 +13,14 @@ export function PageShell({
   title,
   subtitle,
   updated,
+  wide = false,
   children,
 }: {
   eyebrow: string;
   title: string;
   subtitle?: string;
   updated?: string;
+  wide?: boolean;
   children: ReactNode;
 }) {
   return (
@@ -29,7 +31,11 @@ export function PageShell({
           <div className="halo-indigo absolute left-1/2 top-[-140px] h-[340px] w-[560px] -translate-x-1/2" />
         </div>
 
-        <div className="relative mx-auto max-w-[760px] px-5 md:px-8">
+        <div
+          className={`relative mx-auto px-5 md:px-8 ${
+            wide ? "max-w-[1180px]" : "max-w-[760px]"
+          }`}
+        >
           <span className="eyebrow">{eyebrow}</span>
           <h1 className="font-display mt-5 text-[clamp(2rem,5vw,3rem)] leading-[1.05] text-[color:var(--color-ink)]">
             {title}

@@ -14,8 +14,8 @@ export function Nav() {
         <div className="hidden md:flex items-center gap-7 text-[14px] font-medium text-[color:var(--color-ink-dim)]">
           <a href="/#how" className="hover:text-[color:var(--color-ink)]">How it works</a>
           <a href="/#features" className="hover:text-[color:var(--color-ink)]">Features</a>
+          <a href="/service-centers" className="hover:text-[color:var(--color-ink)]">Service centers</a>
           <a href="/#mechanics" className="hover:text-[color:var(--color-ink)]">For mechanics</a>
-          <a href="/#faq" className="hover:text-[color:var(--color-ink)]">FAQ</a>
         </div>
 
         <a href="/#download" className="btn-primary text-[13px] py-2.5 px-4">
