@@ -18,27 +18,29 @@ export default function SupportPage() {
     >
       {/* Primary contact card */}
       <div className="card p-6 md:p-8">
-        <div className="label mb-2">Email us</div>
-        <a
-          href={`mailto:${SUPPORT_EMAIL}`}
-          className="font-display text-[22px] text-[color:var(--color-ink)] hover:text-[color:var(--color-indigo-dark)]"
-        >
-          {SUPPORT_EMAIL}
-        </a>
-        <p className="mt-3 text-[14px] leading-relaxed text-[color:var(--color-ink-dim)]">
-          We typically reply within{" "}
-          <strong className="font-semibold text-[color:var(--color-ink)]">
-            2 business days
-          </strong>
-          . Please include the email address you signed up with so we can find
-          your account quickly.
-        </p>
-        <a
-          href={`mailto:${SUPPORT_EMAIL}`}
-          className="btn-primary mt-6 text-[14px]"
-        >
-          Email support
-        </a>
+        <div className="label mb-4">Email us</div>
+        <div className="flex flex-col items-start gap-4">
+          <a
+            href={`mailto:${SUPPORT_EMAIL}`}
+            className="font-display break-all text-[22px] text-[color:var(--color-ink)] hover:text-[color:var(--color-indigo-dark)]"
+          >
+            {SUPPORT_EMAIL}
+          </a>
+          <p className="text-[14px] leading-relaxed text-[color:var(--color-ink-dim)]">
+            We typically reply within{" "}
+            <strong className="font-semibold text-[color:var(--color-ink)]">
+              2 business days
+            </strong>
+            . Please include the email address you signed up with so we can find
+            your account quickly.
+          </p>
+          <a
+            href={`mailto:${SUPPORT_EMAIL}`}
+            className="btn-primary text-[14px]"
+          >
+            Email support
+          </a>
+        </div>
       </div>
 
       <Prose>

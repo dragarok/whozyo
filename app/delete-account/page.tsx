@@ -62,19 +62,21 @@ export default function DeleteAccountPage() {
       </Prose>
 
       <div className="card p-6 md:p-8">
-        <div className="label mb-2">Request deletion by email</div>
-        <a
-          href={`mailto:${SUPPORT_EMAIL}?subject=Account%20deletion%20request`}
-          className="font-display text-[20px] text-[color:var(--color-ink)] hover:text-[color:var(--color-indigo-dark)]"
-        >
-          {SUPPORT_EMAIL}
-        </a>
-        <a
-          href={`mailto:${SUPPORT_EMAIL}?subject=Account%20deletion%20request`}
-          className="btn-primary mt-6 text-[14px]"
-        >
-          Request account deletion
-        </a>
+        <div className="label mb-4">Request deletion by email</div>
+        <div className="flex flex-col items-start gap-5">
+          <a
+            href={`mailto:${SUPPORT_EMAIL}?subject=Account%20deletion%20request`}
+            className="font-display break-all text-[20px] text-[color:var(--color-ink)] hover:text-[color:var(--color-indigo-dark)]"
+          >
+            {SUPPORT_EMAIL}
+          </a>
+          <a
+            href={`mailto:${SUPPORT_EMAIL}?subject=Account%20deletion%20request`}
+            className="btn-primary text-[14px]"
+          >
+            Request account deletion
+          </a>
+        </div>
       </div>
     </PageShell>
   );
