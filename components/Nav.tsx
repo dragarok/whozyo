@@ -15,6 +15,7 @@ export function Nav() {
           <a href="/#how" className="hover:text-[color:var(--color-ink)]">How it works</a>
           <a href="/#features" className="hover:text-[color:var(--color-ink)]">Features</a>
           <a href="/service-centers" className="hover:text-[color:var(--color-ink)]">Service centers</a>
+          <a href="/blog" className="hover:text-[color:var(--color-ink)]">Blog</a>
           <a href="/#mechanics" className="hover:text-[color:var(--color-ink)]">For mechanics</a>
         </div>
 
