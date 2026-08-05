@@ -1,7 +1,18 @@
+export const APP_STORE_URL =
+  "https://apps.apple.com/us/app/wiym-vehicle-service-tracker/id6769426409";
+export const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.whozyo.mechanic";
+
 export function AppStoreBadges({ className = "" }: { className?: string }) {
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      <a href="#download" className="store-badge" aria-label="Download on the App Store">
+      <a
+        href={APP_STORE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="store-badge"
+        aria-label="Download on the App Store"
+      >
         <span className="size-7 shrink-0 grid place-items-center">
           <AppleGlyph />
         </span>
@@ -10,7 +21,13 @@ export function AppStoreBadges({ className = "" }: { className?: string }) {
           <span className="store-name">App Store</span>
         </span>
       </a>
-      <a href="#download" className="store-badge" aria-label="Get it on Google Play">
+      <a
+        href={PLAY_STORE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="store-badge"
+        aria-label="Get it on Google Play"
+      >
         <span className="size-7 shrink-0 grid place-items-center">
           <PlayGlyph />
         </span>
