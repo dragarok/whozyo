@@ -1,14 +1,32 @@
-// {{PLAY_STORE_URL}} — the Play Store listing does not exist yet (no keystore,
-// no Play listing as of the 2026-08-06 release-candidate ledger). The launch
-// app is Android-only (android/app/src/main/AndroidManifest.xml, app.json
-// package net.whozyo.app) — there is no iOS build, so no App Store badge.
-// Fill in the real listing URL once the app is published, and add an Apple
-// badge only if an iOS build ships.
-export const PLAY_STORE_URL = "{{PLAY_STORE_URL}}";
+// Open question, not a defect: these listings are wiym-vehicle-service-tracker
+// (Apple) / com.whozyo.mechanic (Play), while the app now in development in
+// whozyo_app is net.whozyo.app — so these badges may point at a predecessor
+// product rather than the one being built here. Both URLs resolve (verified
+// live). Leave as-is; which listing these badges should point to is the
+// operator's call, not ours.
+export const APP_STORE_URL =
+  "https://apps.apple.com/us/app/wiym-vehicle-service-tracker/id6769426409";
+export const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.whozyo.mechanic";
 
 export function AppStoreBadges({ className = "" }: { className?: string }) {
   return (
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
+      <a
+        href={APP_STORE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="store-badge"
+        aria-label="Download on the App Store"
+      >
+        <span className="size-7 shrink-0 grid place-items-center">
+          <AppleGlyph />
+        </span>
+        <span className="flex flex-col items-start leading-tight">
+          <span className="store-eyebrow">Download on the</span>
+          <span className="store-name">App Store</span>
+        </span>
+      </a>
       <a
         href={PLAY_STORE_URL}
         target="_blank"
@@ -25,6 +43,17 @@ export function AppStoreBadges({ className = "" }: { className?: string }) {
         </span>
       </a>
     </div>
+  );
+}
+
+function AppleGlyph() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-[26px]" aria-hidden>
+      <path
+        fill="white"
+        d="M16.5 12.5c0-2.7 2.2-4 2.3-4.1-1.2-1.8-3.2-2-3.9-2.1-1.6-.2-3.2 1-4 1-.8 0-2.1-1-3.5-1-1.8 0-3.5 1.1-4.4 2.7-1.9 3.3-.5 8.1 1.3 10.8.9 1.3 2 2.7 3.4 2.6 1.4-.1 1.9-.9 3.6-.9 1.6 0 2.1.9 3.6.9 1.5 0 2.4-1.3 3.3-2.6.6-.9 1-1.8 1.4-2.7-3.7-1.5-3.4-5.5-3.1-4.6Zm-2.7-8.2c.8-1 1.3-2.4 1.2-3.7-1.1.1-2.4.7-3.2 1.7-.7.9-1.4 2.3-1.2 3.6 1.2.1 2.4-.6 3.2-1.6Z"
+      />
+    </svg>
   );
 }
 
