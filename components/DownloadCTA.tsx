@@ -23,7 +23,7 @@ export function DownloadCTA() {
             <div className="col-span-12 lg:col-span-8">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur text-white/90 font-semibold text-[12px] tracking-[0.06em] uppercase">
                 <span className="size-1.5 rounded-full bg-[color:var(--color-emerald-soft)] live-dot" />
-                Live in Nepal
+                Launching in Kathmandu
               </span>
               <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.02] mt-4 text-white">
                 Find a mechanic you can
@@ -32,7 +32,7 @@ export function DownloadCTA() {
               </h2>
               <p className="mt-5 text-[17px] text-white/80 leading-relaxed max-w-[52ch]">
                 Download the app, scan your first QR, and watch a repair go
-                from anxious to obvious. iOS and Android, free for owners.
+                from anxious to obvious. Android, free for owners.
               </p>
             </div>
 

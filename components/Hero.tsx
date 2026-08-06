@@ -18,7 +18,7 @@ export function Hero() {
             <div className="anim-fade">
               <span className="eyebrow">
                 <span className="size-1.5 rounded-full bg-[color:var(--color-emerald)] live-dot" />
-                Now live in Nepal · iOS &amp; Android
+                Launching in Kathmandu · Android
               </span>
             </div>
 
@@ -40,8 +40,8 @@ export function Hero() {
               style={{ animationDelay: "200ms" }}
             >
               WhoIsYourMechanic is the trusted way to find a verified mechanic,
-              watch the work as it happens, and pay through the app — built for
-              every garage in Nepal.
+              watch the work as it happens, and settle up with a permanent
+              itemised receipt — built for every garage in Nepal.
             </p>
 
             <div
@@ -57,7 +57,7 @@ export function Hero() {
               style={{ animationDelay: "400ms" }}
             >
               {[
-                ["3 apps", "Client · Mechanic · Workshop"],
+                ["1 app", "Client · Mechanic · Workshop"],
                 ["100%", "Receipt-bound reviews"],
                 ["EN + नेपाली", "Bilingual, day one"],
               ].map(([k, v]) => (

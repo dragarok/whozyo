@@ -9,23 +9,23 @@ const FAQS = [
   },
   {
     q: "Is it free to use?",
-    a: "The apps are free for vehicle owners. Mechanics and workshops pay a small platform fee on each completed job — there are no listing fees, no monthly subscriptions, and no fees for unverified work.",
+    a: "The app is free to use today, for vehicle owners and mechanics alike — no listing fees, no subscriptions. That may change as the platform grows.",
   },
   {
     q: "How do I know a mechanic is really verified?",
-    a: "Every mechanic clears identity, licence, and workplace checks before they can take their first job. Verification badges show on every profile, and the full history (jobs done, reviews, disputes) is public.",
+    a: "A verified badge means a real person on our team checked the mechanic's identity — a phone number and, where given, a government ID or business registration — before it was added to their profile. Every mechanic's job and review history is visible on their profile so you can judge for yourself.",
   },
   {
     q: "What if I'm unhappy with the work?",
-    a: "Open a dispute in the app. Because every job has photos, line-items, and a payment receipt attached, it's resolved against the real record — not someone's memory.",
+    a: "Message the mechanic in the app first — every job has photos, itemised quotes, and a receipt attached, so it's resolved against the real record, not memory. If you can't work it out together, email us with the job details and a person will look into it.",
   },
   {
     q: "Does it work on Android phones?",
-    a: "Yes — both iOS and Android, day one. The app is also fully translated into Nepali; switch languages anytime in settings.",
+    a: "Yes — WhoIsYourMechanic launches on Android, in Kathmandu. The app is also translated into Nepali; switch languages anytime in settings.",
   },
   {
     q: "I run a service centre. Can I onboard my team?",
-    a: "Yes. Workshops get a multi-seat workspace, and you can invite mechanics with a QR code. The whole floor — bays, jobs, mechanics on shift — lives in one dashboard.",
+    a: "Not yet as a dedicated multi-seat dashboard — today, each mechanic and each service centre uses their own account. Email us if you run a workshop and want to talk about how the team fits in.",
   },
 ];
 

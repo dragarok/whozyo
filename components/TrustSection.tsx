@@ -2,7 +2,7 @@ const PILLARS = [
   {
     title: "Verified, not anonymous.",
     body:
-      "Every mechanic and workshop on WhoIsYourMechanic clears identity, licence, and workplace checks before their name shows up anywhere.",
+      "A verified badge means a person on our team checked the mechanic's identity — a phone number and, where given, a government ID or business registration — before the profile went live.",
   },
   {
     title: "Reviews tied to receipts.",
@@ -15,9 +15,9 @@ const PILLARS = [
       "Every quote, photo, payment, and note is preserved against the mechanic's permanent record — and yours.",
   },
   {
-    title: "Disputes have receipts.",
+    title: "Problems have receipts.",
     body:
-      "If something goes wrong, the full record goes with it. The market self-corrects when nothing can be hidden.",
+      "If something goes wrong, the photos, quote, and payment record go with it — so a disagreement is resolved against what actually happened, not memory.",
   },
 ];
 

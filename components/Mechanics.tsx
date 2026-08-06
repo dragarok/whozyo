@@ -30,7 +30,7 @@ export function Mechanics() {
                 ["Zero listing fees", "Free to join. Free to use."],
                 ["No fake competition", "Receipt-bound reviews mean nobody can buy stars over you."],
                 ["You keep your customers", "Customer relationships live in your record, not the platform's."],
-                ["Pay-out in the app", "Payments collected in-app and settled to your account."],
+                ["One itemised record", "Every quote, job, and receipt kept in one place — no more chasing a bill from memory."],
               ].map(([t, b]) => (
                 <li key={t} className="flex items-start gap-3">
                   <span className="mt-1 size-2 rounded-full bg-[color:var(--color-emerald)] shrink-0" />

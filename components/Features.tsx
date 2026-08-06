@@ -35,9 +35,9 @@ const FEATURES = [
     icon: <CarIcon />,
   },
   {
-    title: "In-app payment",
+    title: "One clear bill",
     body:
-      "Pay through the app once the work is done. Funds release only after you approve. No more chasing the workshop for a bill.",
+      "The itemised bill and payment record live in the app, so there's one place to check what you owe and what you've paid — however you settle it with the mechanic.",
     tone: "amber" as const,
     icon: <WalletIcon />,
   },

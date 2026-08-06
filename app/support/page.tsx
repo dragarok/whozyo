@@ -48,15 +48,16 @@ export default function SupportPage() {
 
         <h3>Account &amp; sign-in</h3>
         <p>
-          WhoIsYourMechanic uses Sign in with Apple, Google, or email. If you
-          can't sign in, email us from your registered address and we'll help you
-          recover access.
+          WhoIsYourMechanic uses your phone number to sign in — we text you a
+          one-time code, no password to remember. If you can't sign in, email
+          us from the phone number or email address on your account and
+          we'll help you recover access.
         </p>
 
         <h3>Deleting your account</h3>
         <p>
-          You can permanently delete your account and personal data at any time —
-          directly in the app, or by request. See{" "}
+          You can request permanent deletion of your account and personal
+          data at any time by email — see{" "}
           <a href="/delete-account">how to delete your account</a>.
         </p>
 

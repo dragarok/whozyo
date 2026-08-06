@@ -22,9 +22,9 @@ const STEPS = [
   },
   {
     n: "04",
-    title: "Pay & keep the record.",
+    title: "Settle up & keep the record.",
     body:
-      "Pay in the app, get a permanent itemised receipt, and leave a review that's bound to the job — so it actually means something.",
+      "Get a permanent itemised receipt once you've paid, and leave a review that's bound to the job — so it actually means something.",
     icon: <ReceiptIcon />,
   },
 ];

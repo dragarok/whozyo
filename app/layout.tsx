@@ -26,12 +26,12 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "WhoIsYourMechanic — Know who fixes your vehicle.",
   description:
-    "Find verified mechanics, watch the work, pay through the app. Built for Nepal — for clients, mechanics, and service centres.",
+    "Find verified mechanics, watch the work, settle up with an itemised receipt. Built for Nepal — for clients, mechanics, and service centres.",
   metadataBase: new URL("https://whozyo.com"),
   openGraph: {
     title: "WhoIsYourMechanic — Know who fixes your vehicle.",
     description:
-      "Find verified mechanics, watch the work, pay through the app.",
+      "Find verified mechanics, watch the work, settle up with an itemised receipt.",
     url: "https://whozyo.com",
     siteName: "WhoIsYourMechanic",
     type: "website",
