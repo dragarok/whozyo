@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { PageShell, Prose } from "@/components/PageShell";
+import { PageShell, Prose, DraftBanner } from "@/components/PageShell";
 
 export const metadata: Metadata = {
   title: "Delete your account — WhoIsYourMechanic",
   description:
-    "How to permanently delete your WhoIsYourMechanic account and personal data — directly in the app, or by emailing support@whozyo.com.",
+    "How to request deletion of your WhoIsYourMechanic account and personal data, and what stays on record afterward.",
 };
 
 const SUPPORT_EMAIL = "support@whozyo.com";
@@ -14,50 +14,73 @@ export default function DeleteAccountPage() {
     <PageShell
       eyebrow="Your data"
       title="Delete your account"
-      subtitle="You can permanently remove your personal information from WhoIsYourMechanic at any time."
+      subtitle="You can request permanent removal of your personal information from WhoIsYourMechanic at any time."
+      updated="6 August 2026"
     >
+      <DraftBanner />
       <Prose>
-        <h2>Delete from the app (recommended)</h2>
-        <p>The fastest way to delete your account is from inside the app:</p>
-        <ol>
-          <li>Open WhoIsYourMechanic and sign in.</li>
-          <li>
-            Go to the <strong>Profile</strong> tab.
-          </li>
-          <li>
-            Scroll down to the <strong>Account</strong> section.
-          </li>
-          <li>
-            Tap <strong>Delete account</strong>.
-          </li>
-          <li>
-            Type <strong>DELETE</strong> to confirm, then confirm the dialog.
-          </li>
-        </ol>
+        <h2>How to request deletion</h2>
         <p>
-          Your personal details are removed immediately and you're signed out.
+          The app does not yet have a self-service &ldquo;Delete
+          account&rdquo; button. Today, every deletion is handled by a
+          person: email{" "}
+          <a href={`mailto:${SUPPORT_EMAIL}?subject=Account%20deletion%20request`}>
+            {SUPPORT_EMAIL}
+          </a>{" "}
+          from the phone number or account you signed up with, and ask us to
+          delete your account. We verify it&apos;s really you, then act on
+          the request.
+        </p>
+        <p>
+          We aim to complete a deletion within{" "}
+          <strong>{"{{DELETION_SLA}}"}</strong>. This is a manual process
+          while the in-app flow is being built — we will not silently sit on
+          a request.
         </p>
 
-        <h2>What's removed and what's kept</h2>
+        <h2>What&apos;s removed and what stays on the record</h2>
         <p>
-          <strong>Permanently removed:</strong> your name, phone number, email
-          address, address, profile photo, and any garage or business details.
+          <strong>Removed:</strong> your ability to sign in, your phone
+          number as a login credential, your display name and handle, and
+          any vehicles or other items you registered that no one else
+          depends on.
         </p>
         <p>
-          <strong>Kept in anonymized form:</strong> records of past jobs and
-          service history remain on file for the clients and mechanics you
-          worked with, but with your identity scrubbed so you can no longer be
-          identified from them. This preserves the other party's legitimate
-          service records. This action cannot be undone.
+          <strong>Stays on the record, because it is not only your fact:</strong>
+        </p>
+        <ul>
+          <li>
+            A <strong>settled payment receipt</strong> — once a payment
+            clears, the receipt is a shared record for both people in that
+            job. Deleting your account does not un-happen a payment.
+          </li>
+          <li>
+            An <strong>outstanding balance</strong> — if you owe money to, or
+            are owed money by, someone else on the platform, deleting your
+            account does not cancel that debt. Please settle it first, or
+            contact us if that&apos;s not possible.
+          </li>
+          <li>
+            A <strong>published review</strong> — a review you left or
+            received about a completed job is a fact about that job for the
+            other party, and stays up after your account is gone.
+          </li>
+        </ul>
+        <p>
+          We will remove or scrub your name and contact details from these
+          records everywhere we technically can, but we will not delete the
+          underlying job, payment, or review itself — we cannot honestly
+          promise a clean erase of a fact that belongs to two people, only
+          one of whom asked to leave. This action, once completed, cannot be
+          undone.
         </p>
 
-        <h2>Can't access the app?</h2>
+        <h2>Can&apos;t access the app or your phone number?</h2>
         <p>
-          If you can no longer sign in, you can still request deletion. Email{" "}
-          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> from the email
-          address associated with your account and ask us to delete it. We verify
-          ownership and complete the deletion within{" "}
-          <strong>30 days</strong> (usually much sooner).
+          Email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> and
+          tell us what you can about the account (name, approximate sign-up
+          date, anyone you transacted with). We&apos;ll work with you to
+          verify ownership before deleting anything.
         </p>
       </Prose>
 

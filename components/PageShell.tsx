@@ -62,6 +62,27 @@ export function PageShell({
 }
 
 /**
+ * Draft-legal-copy banner. Heads any page whose text has not yet been reviewed
+ * by counsel — makes the draft status visible on the page itself, not just in
+ * a commit message.
+ */
+export function DraftBanner({ reviewer = "{{LEGAL_ENTITY}}" }: { reviewer?: string }) {
+  return (
+    <div
+      className="card mb-2 flex items-start gap-3 border-[color:color-mix(in_srgb,var(--color-amber)_40%,transparent)] bg-[color:var(--color-amber-tint)] p-4 text-[13px] leading-relaxed"
+      style={{ color: "#92400e" }}
+    >
+      <span className="pill pill-amber shrink-0">Draft</span>
+      <span>
+        This page is a working draft — <strong>not legal advice</strong> — and
+        is pending review by {reviewer}. Do not treat it as published policy
+        until that review is complete.
+      </span>
+    </div>
+  );
+}
+
+/**
  * Typography wrapper for long-form text (headings, paragraphs, lists, links).
  * Uses arbitrary descendant variants so page bodies stay plain HTML.
  */
