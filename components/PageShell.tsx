@@ -63,8 +63,13 @@ export function PageShell({
 
 /**
  * Draft-legal-copy banner. Heads any page whose text has not yet been reviewed
- * by counsel — makes the draft status visible on the page itself, not just in
- * a commit message.
+ * by counsel.
+ *
+ * It now says the OTHER true thing as well: whozyo is not a registered
+ * business yet. That is not a hedge bolted on — it is the single most
+ * load-bearing fact about how to read these pages, and burying it would be the
+ * dishonest choice. The app is in testing in Nepal; the formal legal structure
+ * comes after. Both halves stay until both stop being true.
  */
 export function DraftBanner({ reviewer = "a qualified lawyer" }: { reviewer?: string }) {
   return (
@@ -74,9 +79,10 @@ export function DraftBanner({ reviewer = "a qualified lawyer" }: { reviewer?: st
     >
       <span className="pill pill-amber shrink-0">Draft</span>
       <span>
-        This page is a working draft — <strong>not legal advice</strong> — and
-        is pending review by {reviewer}. Do not treat it as published policy
-        until that review is complete.
+        <strong>whozyo is an app in testing, not a registered business.</strong>{" "}
+        There is no company set up behind it yet — that comes later, and this
+        page will be rewritten when it does. This text is a working draft,{" "}
+        <strong>not legal advice</strong>, and is pending review by {reviewer}.
       </span>
     </div>
   );
