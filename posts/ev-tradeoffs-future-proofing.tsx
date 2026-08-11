@@ -11,7 +11,7 @@ export const meta: PostMeta = {
   date: "2026-06-02",
   readingMinutes: 10,
   tags: ["EV", "Buying Guide", "Nepal", "Batteries"],
-  author: "WhoIsYourMechanic Team",
+  author: "WhoIsYourMechanic",
 };
 
 const retentionAt8 = [

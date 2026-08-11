@@ -190,8 +190,10 @@ export default function DeleteAccountPage() {
             the same phone number or email starts a new account from nothing.
           </li>
           <li>
-            <strong>Your devices.</strong> The push registrations that let us
-            reach your phone are removed, so nothing can notify you again.
+            <strong>Your devices.</strong> The device registrations kept for
+            push notifications are removed. To be accurate: the app does not
+            send push notifications yet, so today this deletes a slot that was
+            never filled — but it is emptied all the same.
           </li>
           <li>
             <strong>Your payment QR codes</strong>, and the wallet or bank

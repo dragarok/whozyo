@@ -19,9 +19,9 @@ const ROLES: Role[] = [
     badge: "For owners",
     badgeTone: "indigo",
     title: "Hand over the keys with confidence.",
-    sub: "Scan a QR, see the mechanic's verified record, follow every step of the repair from your phone — and approve the itemised quote before any work begins.",
+    sub: "Scan a QR, read the mechanic's record of settled jobs, follow every step of the repair from your phone — and approve the itemised quote before any work begins.",
     bullets: [
-      "Verified mechanic profiles with real review history",
+      "Profiles built from settled jobs and receipt-bound reviews",
       "Live photo timeline of every part removed",
       "Itemised quotes — parts, labour, fees, broken down",
       "A permanent, itemised receipt for every job",
@@ -32,7 +32,7 @@ const ROLES: Role[] = [
     badge: "For mechanics",
     badgeTone: "emerald",
     title: "Build a name that travels with you.",
-    sub: "Every job you complete adds to a public record only you own. No middlemen, no fake reviews, no chasing payments — just your work, well documented.",
+    sub: "Every job you complete adds to a public record only you own. No middlemen, no fake reviews, no arguing about what the quote said — just your work, well documented.",
     bullets: [
       "QR-paired bookings — no phone numbers traded",
       "Tap to mark yourself available for the day",
@@ -44,13 +44,13 @@ const ROLES: Role[] = [
   {
     badge: "For workshops",
     badgeTone: "amber",
-    title: "Run the floor from one screen.",
-    sub: "Invite your mechanics with a QR, assign jobs, see who's on shift, and watch every bay's status in real time. One unified workspace for the whole garage.",
+    title: "See the whole team on one screen.",
+    sub: "Your mechanics join by scanning a QR. You see who's carrying what today, and you hand a job to one named mechanic — so the customer knows whose hands their vehicle is in.",
     bullets: [
-      "Multi-seat workspace with QR onboarding",
-      "Bay-by-bay live status dashboard",
-      "Mechanic availability and shift view",
-      "Shop-wide jobs, invoices, and customer records",
+      "Mechanics join by QR — never by being looked up",
+      "Every mechanic's load for the day, at a glance",
+      "Assign a job to one named mechanic",
+      "Shop-wide jobs, quotes, and receipts in one record",
     ],
     screen: <ServiceCenterScreen />,
   },
@@ -70,7 +70,7 @@ export function ThreeRoles() {
     >
       <div className="mx-auto max-w-[1240px] px-5 md:px-8">
         <header className="max-w-[760px] mb-16">
-          <span className="eyebrow">Three apps · one trusted network</span>
+          <span className="eyebrow">One app · three ways to use it</span>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.05] mt-4 text-[color:var(--color-ink)]">
             Built for everyone in the
             <br />
@@ -78,8 +78,8 @@ export function ThreeRoles() {
           </h2>
           <p className="mt-5 text-[17px] text-[color:var(--color-ink-dim)] leading-relaxed max-w-[60ch]">
             Whether you're handing over the keys, holding the wrench, or
-            running the workshop — WhoIsYourMechanic gives you the app
-            designed for your actual job, not a one-size-fits-all template.
+            running the workshop — one app, which shows you the screens for
+            your actual job rather than a one-size-fits-all template.
           </p>
         </header>
 

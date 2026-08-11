@@ -1,23 +1,23 @@
 const PILLARS = [
   {
-    title: "Verified, not anonymous.",
+    title: "Verified means one narrow thing.",
     body:
-      "A verified badge means a person on our team checked the mechanic's identity — a phone number and, where given, a government ID or business registration — before the profile went live.",
+      "The account proved control of a real phone number, recorded automatically at sign-in. Nobody verifies themselves; nobody buys it. It is not an ID check — it's a door, not a character reference. What it opens is the part worth reading: only a verified mechanic can be reviewed at all.",
   },
   {
-    title: "Reviews tied to receipts.",
+    title: "Reviews tied to settled jobs.",
     body:
-      "A review can only exist if a paid job exists. No five-star bots, no star-farming, no removal-as-a-service.",
+      "A review can only be written by the person who was on the other side of the job, and only once that job is actually settled. Once written it can't be edited or deleted by either party. No five-star bots, no star-farming, no removal-as-a-service.",
   },
   {
-    title: "Everything on record.",
+    title: "The record does the talking.",
     body:
-      "Every quote, photo, payment, and note is preserved against the mechanic's permanent record — and yours.",
+      "Not a score. Plain sentences worked out from settled jobs: whether the price quoted was the price paid, how many customers came back, how quickly they reply, how much of the work was photographed. There is no hidden rating to game.",
   },
   {
-    title: "Problems have receipts.",
+    title: "Problems keep their receipts.",
     body:
-      "If something goes wrong, the photos, quote, and payment record go with it — so a disagreement is resolved against what actually happened, not memory.",
+      "If something goes wrong, the photos, the quote, and the payment record go with it — so a disagreement starts from what actually happened, not from memory. Nobody here decides who was right; the record just refuses to disappear.",
   },
 ];
 
@@ -35,12 +35,14 @@ export function TrustSection() {
               <span className="text-[color:var(--color-indigo-dark)]">It's a record.</span>
             </h2>
             <p className="mt-5 text-[17px] text-[color:var(--color-ink-dim)] leading-relaxed max-w-[42ch]">
-              The most important thing we sell isn't a feature. It's a system
-              that makes dishonest work harder than honest work — for everyone
-              involved.
+              The important part isn't a feature. It's a system that makes
+              dishonest work harder than honest work — for everyone involved.
             </p>
 
             <div className="mt-10 card p-6 max-w-[420px]">
+              <div className="label mb-4 text-[10px]">
+                Example profile — not a real mechanic
+              </div>
               <div className="flex items-center gap-3">
                 <div className="size-10 rounded-full bg-gradient-to-br from-[color:var(--color-indigo)] to-[color:var(--color-emerald)] grid place-items-center text-white font-display">
                   R
@@ -50,7 +52,7 @@ export function TrustSection() {
                     Ramesh K.
                   </div>
                   <div className="text-[11px] font-mono text-[color:var(--color-emerald)] mt-0.5">
-                    ✓ Verified mechanic · since 2023
+                    ✓ Verified mechanic
                   </div>
                 </div>
               </div>
@@ -58,7 +60,7 @@ export function TrustSection() {
                 {[
                   ["217", "Jobs"],
                   ["4.9", "Rating"],
-                  ["0", "Disputes"],
+                  ["83", "Reviews"],
                 ].map(([v, k]) => (
                   <div
                     key={k}
@@ -70,7 +72,7 @@ export function TrustSection() {
                 ))}
               </div>
               <div className="mt-4 text-[12px] font-mono text-[color:var(--color-ink-faint)]">
-                Last 90 days · receipt-bound reviews only
+                Every number here comes from a settled job
               </div>
             </div>
           </div>

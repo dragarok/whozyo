@@ -5,27 +5,27 @@ import { useState } from "react";
 const FAQS = [
   {
     q: "Where is WhoIsYourMechanic available?",
-    a: "We're launching in Kathmandu, with mechanics and workshops onboarding across the valley right now. The plan is to expand region-by-region across Nepal through 2026.",
+    a: "Kathmandu first. The app is in testing there — it is not yet open across the valley, and there is no roster of onboarded workshops waiting for you. If you'd like to be among the first mechanics or workshops on it, write to the address below. The intention is to open region by region across Nepal from there.",
   },
   {
     q: "Is it free to use?",
-    a: "The app is free to use today, for vehicle owners and mechanics alike — no listing fees, no subscriptions. That may change as the platform grows.",
+    a: "Yes, today — for vehicle owners and mechanics alike. No listing fees, no subscriptions, and no way to pay for one: nothing in the app charges anyone money. That may change later, and this page will say so when it does.",
   },
   {
-    q: "How do I know a mechanic is really verified?",
-    a: "A verified badge means a real person on our team checked the mechanic's identity — a phone number and, where given, a government ID or business registration — before it was added to their profile. Every mechanic's job and review history is visible on their profile so you can judge for yourself.",
+    q: "What does a verified badge actually mean?",
+    a: "One narrow thing: the account proved control of a real phone number — a code was sent to it and entered back — and that proof was recorded automatically at sign-in. Nobody can mark themselves verified and nobody can buy it. It is not an identity check: no citizenship card is inspected, no licence, no business registration, and there is no team performing checks. The badge matters for what it gates, not for what it says — a review can only be left against a verified mechanic, and only by the person who was on the other side of a job that was actually settled. So read the job and review history underneath the badge. That is the part that is hard to fake.",
   },
   {
     q: "What if I'm unhappy with the work?",
-    a: "Message the mechanic in the app first — every job has photos, itemised quotes, and a receipt attached, so it's resolved against the real record, not memory. If you can't work it out together, email us with the job details and a person will look into it.",
+    a: "Message the mechanic in the app first. Every job carries its photos, its itemised quote, and its receipt, so you're arguing from the record rather than from memory. If you can't settle it between you, write to the address below with the job details. Be clear about what that is and isn't: there is no claims desk, no arbitration, no promised response time, and nothing in the app reverses a payment or overrules either of you. What the record gives you is proof of what was agreed and what was paid.",
   },
   {
     q: "Does it work on Android phones?",
-    a: "Yes — WhoIsYourMechanic launches on Android, in Kathmandu. The app is also translated into Nepali; switch languages anytime in settings.",
+    a: "Yes — WhoIsYourMechanic launches on Android, in Kathmandu. The app is translated into Nepali as well as English; switch languages anytime in settings.",
   },
   {
     q: "I run a service centre. Can I onboard my team?",
-    a: "Not yet as a dedicated multi-seat dashboard — today, each mechanic and each service centre uses their own account. Email us if you run a workshop and want to talk about how the team fits in.",
+    a: "Partly. A workshop can hold a team of mechanics, each joining by scanning a QR rather than being looked up, and a job can be assigned to one named mechanic. What doesn't exist is a bay board, a shift roster, or a finished multi-seat back office. If you run a workshop, write to the address below — this part is being built with the shops that use it.",
   },
 ];
 
@@ -43,8 +43,8 @@ export function FAQ() {
               you'd like to know?
             </h2>
             <p className="mt-5 text-[15px] text-[color:var(--color-ink-dim)] leading-relaxed max-w-[36ch]">
-              If you don't see your question, write to us — we read every
-              message.
+              If your question isn't here, write to the address below. It lands
+              in the inbox behind the app — there is no support queue.
             </p>
             <a
               href="mailto:hello@whoisyourmechanic.com"

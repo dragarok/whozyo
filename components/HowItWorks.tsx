@@ -3,7 +3,7 @@ const STEPS = [
     n: "01",
     title: "Scan the QR.",
     body:
-      "Find a mechanic nearby or scan the QR at any partner workshop. A handshake takes ten seconds — no phone numbers traded.",
+      "Search the directory, or scan the mechanic's QR when you're standing in front of them. The handshake takes ten seconds — no phone numbers traded.",
     icon: <QrIcon />,
   },
   {

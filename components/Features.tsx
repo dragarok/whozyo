@@ -2,7 +2,7 @@ const FEATURES = [
   {
     title: "QR pairing",
     body:
-      "A ten-second QR scan creates a verified link between you and your mechanic. No phone numbers exchanged, no contact-saving, no spam.",
+      "A ten-second QR scan creates a direct link between you and your mechanic. No phone numbers exchanged, no contact-saving, no spam.",
     tone: "indigo" as const,
     icon: <QrIcon />,
   },
@@ -16,14 +16,14 @@ const FEATURES = [
   {
     title: "Photo timeline",
     body:
-      "The mechanic snaps before-and-after of every part. The photos attach to your job and stay with you forever.",
+      "The mechanic snaps before-and-after as the work goes. The photos attach to the job and stay attached to it — they are part of the record, not a message either side can take back.",
     tone: "emerald" as const,
     icon: <CameraIcon />,
   },
   {
     title: "Receipt-bound reviews",
     body:
-      "A review can only exist if a paid job exists. No fake stars, no review-farms, no removal-as-a-service.",
+      "A review can only be written by the person who was on the other side of a settled job — and once written, neither party can edit or delete it. No fake stars, no review-farms, no removal-as-a-service.",
     tone: "emerald" as const,
     icon: <StarIcon />,
   },
@@ -44,14 +44,14 @@ const FEATURES = [
   {
     title: "EN + नेपाली",
     body:
-      "The app speaks English and Nepali, day one. Switch languages anytime — every label, every screen, every notification.",
+      "The app speaks English and Nepali, day one. Switch languages anytime — every label, every screen, dates in Bikram Sambat.",
     tone: "indigo" as const,
     icon: <GlobeIcon />,
   },
   {
-    title: "Workshop floor view",
+    title: "Workshop team view",
     body:
-      "Service centres see every bay, every mechanic, and every customer in one workspace. Add staff via QR.",
+      "A service centre sees its mechanics and what each is carrying today, and assigns a job to one named mechanic. Staff join by scanning a QR — never by being looked up.",
     tone: "emerald" as const,
     icon: <DashIcon />,
   },

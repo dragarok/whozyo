@@ -11,7 +11,7 @@ export const meta: PostMeta = {
   date: "2026-06-02",
   readingMinutes: 9,
   tags: ["EV", "Nepal", "Adoption"],
-  author: "WhoIsYourMechanic Team",
+  author: "WhoIsYourMechanic",
 };
 
 const importsByYear = [

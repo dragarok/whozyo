@@ -40,7 +40,7 @@ export function DownloadCTA() {
               <div className="flex flex-col gap-3 lg:items-end">
                 <AppStoreBadges />
                 <div className="text-[11px] font-mono uppercase tracking-wider text-white/55 lg:text-right">
-                  v1.0 · Free for vehicle owners
+                  In testing · Free for vehicle owners
                 </div>
               </div>
             </div>

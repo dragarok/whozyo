@@ -11,7 +11,7 @@ export const meta: PostMeta = {
   date: "2026-06-02",
   readingMinutes: 8,
   tags: ["EV", "Nepal", "Budget", "Tax"],
-  author: "WhoIsYourMechanic Team",
+  author: "WhoIsYourMechanic",
 };
 
 const oldCustomsByBracket = [

@@ -18,8 +18,8 @@ export function Footer() {
               </div>
             </div>
             <p className="mt-6 text-[14px] text-[color:var(--color-ink-dim)] leading-relaxed max-w-[40ch]">
-              Made with care in Kathmandu — for every garage in Nepal, and the
-              people who keep them moving.
+              Made in Kathmandu — for every garage in Nepal, and the people who
+              keep them moving.
             </p>
           </div>
 
@@ -49,10 +49,6 @@ export function Footer() {
             <ul className="space-y-2 text-[14px] text-[color:var(--color-ink-dim)] font-mono">
               <li>Kathmandu, Nepal</li>
               <li><a href="mailto:support@whozyo.com" className="hover:text-[color:var(--color-ink)]">support@whozyo.com</a></li>
-              <li className="flex items-center gap-2 text-[color:var(--color-emerald)]">
-                <span className="size-1.5 rounded-full bg-[color:var(--color-emerald)] live-dot" />
-                System operational
-              </li>
             </ul>
           </div>
         </div>
@@ -60,7 +56,9 @@ export function Footer() {
         <div className="section-rule my-10" />
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-[12px] text-[color:var(--color-ink-faint)]">
-          <span>© 2026 WhoIsYourMechanic. All rights reserved.</span>
+          <span>
+            WhoIsYourMechanic — an app in testing, not a registered business.
+          </span>
           <span className="flex items-center gap-4">
             <a href="/support" className="hover:text-[color:var(--color-ink)]">Support</a>
             <span className="opacity-50">·</span>
