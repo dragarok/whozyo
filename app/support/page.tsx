@@ -48,9 +48,10 @@ export default function SupportPage() {
 
         <h3>Account &amp; sign-in</h3>
         <p>
-          WhoIsYourMechanic uses your phone number to sign in — we text you a
-          one-time code, no password to remember. If you can't sign in, email
-          us from the phone number or email address on your account and
+          There are two ways to sign in: an email address and a password, or
+          your phone number with a one-time code. You choose one when you sign
+          up. There is no password-reset feature yet, so if you cannot sign in,
+          email us from the phone number or email address on your account and
           we'll help you recover access.
         </p>
 
@@ -63,9 +64,11 @@ export default function SupportPage() {
 
         <h3>Privacy &amp; your data</h3>
         <p>
-          Learn what we collect and how it's used in our{" "}
-          <a href="/privacy">Privacy Policy</a>. To request a copy or removal of
-          your data, email{" "}
+          Learn what is collected, who can see it, and how long it is kept in
+          our <a href="/privacy">Privacy Policy</a>. There is no
+          &ldquo;download your data&rdquo; file yet — your record is readable in
+          the app but cannot be exported as a file. To ask about your
+          information or to have it removed, email{" "}
           <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
         </p>
 

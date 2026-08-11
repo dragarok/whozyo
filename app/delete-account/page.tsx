@@ -32,12 +32,25 @@ const MAILTO = `mailto:${SUPPORT_EMAIL}?subject=Account%20deletion%20request`;
  *      "sign in AND tap Stay on whozyo", never "signing in brings you back".
  *   2. THE SIGN-OUT IS REAL. Asking to leave revokes every session for the actor
  *      server-side, so "signed out on every device" is true at the moment of the ask.
- *   3. WHAT IS *NOT* CLAIMED: that deletion ends sign-in. purge_actor() deletes
- *      public.actor_credentials (the email/password binding) but the phone->actor
- *      binding lives in a backend-tier table it cannot reach, so a purged phone number
- *      still resolves. A fix is in flight in LANE-INFRA. Until it lands, NO sentence on
- *      this page or on the app screen says the account can no longer be signed into,
- *      and none says "all your personal information is gone" as an absolute.
+ *   3. DELETION NOW ENDS SIGN-IN, and this page may finally say so (verified 2026-08-11,
+ *      backend d04507d + spine 0257). The old hole: purge_actor() deletes
+ *      public.actor_credentials (email/password) but the phone/Google binding lives in
+ *      tier.oauth_identities, which the spine cannot reach — so a purged number still
+ *      resolved. Both halves are now closed and BOTH were read before this was written:
+ *      ForgetActorInTier deletes that row (internal/auth/purge.go:150-170), and
+ *      admit() refuses a purged actor outright with ErrAccountPurged while forgetting
+ *      the binding on the way out (internal/auth/auth.go:417-443) — belt and braces.
+ *      Still NOT claimed, because it is still false: that a purge erases everything
+ *      personal. tier.phone_otp_sends keeps one row per number that ever requested a
+ *      code (deliberate, purge.go:140-143) and purged media BYTES are only flagged, never
+ *      removed from storage (media.Store has no Delete method). Both are disclosed on
+ *      /privacy rather than glossed here.
+ *
+ *   4. THE WAY BACK IS ONE STEP, NOT TWO. admit() cancels a pending deletion inside the
+ *      sign-in transaction itself (auth.go:417-428, state 'leaving' -> reactivate_account()),
+ *      so "sign in and then tap the button" is no longer what the code does. A deactivated
+ *      account is deliberately NOT auto-reactivated by the same function, which is why the
+ *      break section below still describes tapping Come back.
  *
  * There is deliberately no "download your data" offer: no such endpoint exists (the
  * backend has no export route of any kind), so the page states its absence plainly
@@ -170,8 +183,11 @@ export default function DeleteAccountPage() {
           <li>
             <strong>Your sign-in, on every device.</strong> The moment you ask,
             you are signed out everywhere — the tablet at home and the old
-            handset in a drawer included — and the email-and-password credential
-            stored against your account is deleted.
+            handset in a drawer included. When the deletion runs, the way you
+            signed in is deleted with it: the email and password, and the record
+            binding your phone number to the account.{" "}
+            <strong>The account cannot be signed into again</strong>, and
+            the same phone number or email starts a new account from nothing.
           </li>
           <li>
             <strong>Your devices.</strong> The push registrations that let us
@@ -275,27 +291,18 @@ export default function DeleteAccountPage() {
         <h3>How to stop it</h3>
         <p>
           Those 30 days are yours to change your mind in, and stopping the
-          deletion takes two steps:
+          deletion takes one step: <strong>sign in again</strong>. Asking to
+          leave signed you out everywhere, so you will need to sign in the
+          normal way — and that sign-in is itself what cancels the deletion.
         </p>
-        <ol>
-          <li>
-            <strong>Sign in again.</strong> Asking to leave signed you out
-            everywhere, so you will need to sign in the normal way. Your account
-            still lets you in during these 30 days — that is the whole point of
-            them.
-          </li>
-          <li>
-            Open <strong>Settings ▸ Leave whozyo</strong> and tap{" "}
-            <strong>Stay on whozyo</strong>.
-          </li>
-        </ol>
         <p>
-          That cancels the deletion outright — not a pause, not a new request —
-          and brings you back exactly as you were: your chats, your record, your
-          reputation, your place in search. There is nothing to fill in and
-          nothing to ask us for. Signing in on its own is not enough; you have
-          to tap the button, so that nobody who merely opens the app is treated
-          as having changed their mind.
+          It cancels it outright — not a pause, not a new request — and brings
+          you back exactly as you were: your chats, your record, your
+          reputation, your place in search. There is nothing to fill in,
+          nothing to tap afterwards, and nothing to ask us for. The{" "}
+          <strong>Stay on whozyo</strong> button on the{" "}
+          <strong>Settings ▸ Leave whozyo</strong> screen does the same thing if
+          you would rather do it deliberately.
         </p>
         <p>
           After that date the deletion runs and{" "}

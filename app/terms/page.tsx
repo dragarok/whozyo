@@ -19,14 +19,13 @@ export default function TermsPage() {
     >
       <DraftBanner />
       <Prose>
-        <h2>1. Who you are dealing with</h2>
+        <h2>1. What whozyo is</h2>
         <p>
-          <strong>whozyo</strong> is the name of the app, not the name of a
-          company. There is no registered company behind it yet — whozyo is
-          built and run by the small group of people making it, and we are
-          testing it in Nepal before we set up a formal business. We say this
-          first because everything below should be read in that light: when
-          these terms say <strong>we</strong>, it means those people.
+          <strong>whozyo</strong> is the name of the app. It is not yet
+          registered as a business, and it is being launched in Nepal in a
+          testing phase. Registration and the formal legal arrangements that
+          follow it are intended, and these terms will be revised when that
+          happens. Everything below should be read in that light.
         </p>
 
         <h2>2. The service</h2>
@@ -107,12 +106,10 @@ export default function TermsPage() {
           automatically punish anyone, hide anyone, or reverse a payment.
         </p>
         <p>
-          Be straight about the scale: <strong>reports are read by one
-          person</strong>, the developer who builds the app. There is no
-          moderation team and no queue with a service level behind it. Reports
-          get read and acted on as fast as one person can, which is usually
-          quickly because the app is small — but no fixed timeline and no
-          guaranteed outcome is promised, because neither could be kept.
+          Reports and disputes are reviewed, and acted on where action is
+          warranted. whozyo does not promise a fixed response time or a
+          guaranteed outcome, and no automated moderation system decides these
+          matters.
         </p>
 
         <h2>8. Content you provide</h2>
@@ -140,15 +137,13 @@ export default function TermsPage() {
           purpose.
         </p>
         <p>
-          The honest version of the usual liability paragraph: whozyo is not a
-          registered business, so there is no company standing behind these
-          terms to sue or to pay out. What the app does promise is narrow and
-          real — it keeps your record, it does not sell your information, and
-          it deletes your account when you ask. It does not promise the
+          whozyo is not yet registered as a business, and these terms should be
+          read accordingly. What whozyo commits to is narrow and specific: it
+          keeps the record of your jobs, it does not sell your information, and
+          it deletes your account when you ask it to. It does not warrant the
           quality, safety, legality, or price of any job, and it is not
-          answerable for what a mechanic, provider, or client does. That is
-          the true shape of it, and putting a bigger promise here would not
-          make it truer.
+          answerable for the conduct of any mechanic, provider, or client using
+          it.
         </p>
 
         <h2>11. Changes to these terms</h2>
@@ -162,9 +157,8 @@ export default function TermsPage() {
         <h2>12. Where this applies</h2>
         <p>
           The app is being launched in <strong>Nepal</strong>, and the laws of
-          Nepal apply. Questions? Email{" "}
-          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> — it reaches
-          a person, not a desk.
+          Nepal apply. For any question about these terms, write to{" "}
+          <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
         </p>
       </Prose>
     </PageShell>
