@@ -99,6 +99,9 @@ export function Prose({ children }: { children: ReactNode }) {
         [&_li]:text-[15px] [&_li]:leading-relaxed [&_li]:text-[color:var(--color-ink-dim)]
         [&_a]:text-[color:var(--color-indigo-dark)] [&_a]:underline [&_a]:underline-offset-2
         [&_strong]:font-semibold [&_strong]:text-[color:var(--color-ink)]
+        [&_table]:w-full [&_table]:table-fixed [&_table]:border-collapse [&_table]:text-left
+        [&_th]:border-b [&_th]:border-[color:var(--color-border-strong)] [&_th]:pb-2 [&_th]:pr-4 [&_th]:align-top [&_th]:text-[14px] [&_th]:font-semibold [&_th]:text-[color:var(--color-ink)]
+        [&_td]:border-b [&_td]:border-[color:var(--color-border)] [&_td]:py-3 [&_td]:pr-4 [&_td]:align-top [&_td]:text-[14px] [&_td]:leading-relaxed [&_td]:text-[color:var(--color-ink-dim)]
       "
     >
       {children}

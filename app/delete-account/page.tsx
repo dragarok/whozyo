@@ -20,6 +20,28 @@ const MAILTO = `mailto:${SUPPORT_EMAIL}?subject=Account%20deletion%20request`;
  * sentence: if 0256 does not do it, it is not on this page. Where the migration
  * deliberately keeps something (a block, a sent message, a settled receipt) this page
  * says so and says why, because that is the part a person is actually owed.
+ *
+ * THREE CLAIMS WERE VERIFIED IN CODE BEFORE BEING WRITTEN HERE, because each one is a
+ * promise a person plans around:
+ *   1. THE GRACE ESCAPE IS REAL. reactivate_account() (0256 §5) sets BOTH
+ *      purge_requested_at = null AND deactivated_at = null, so "Stay on whozyo" cancels
+ *      the pending purge outright rather than merely undoing the deactivation. The login
+ *      path does NOT refuse a deactivated/leaving account, so signing in during the
+ *      window is genuinely possible. BUT nothing in the login path calls reactivate —
+ *      the ONLY caller is the button (app/settings/leave.tsx) — so this page says
+ *      "sign in AND tap Stay on whozyo", never "signing in brings you back".
+ *   2. THE SIGN-OUT IS REAL. Asking to leave revokes every session for the actor
+ *      server-side, so "signed out on every device" is true at the moment of the ask.
+ *   3. WHAT IS *NOT* CLAIMED: that deletion ends sign-in. purge_actor() deletes
+ *      public.actor_credentials (the email/password binding) but the phone->actor
+ *      binding lives in a backend-tier table it cannot reach, so a purged phone number
+ *      still resolves. A fix is in flight in LANE-INFRA. Until it lands, NO sentence on
+ *      this page or on the app screen says the account can no longer be signed into,
+ *      and none says "all your personal information is gone" as an absolute.
+ *
+ * There is deliberately no "download your data" offer: no such endpoint exists (the
+ * backend has no export route of any kind), so the page states its absence plainly
+ * instead of implying a person can take their record with them.
  */
 export default function DeleteAccountPage() {
   return (
@@ -30,16 +52,82 @@ export default function DeleteAccountPage() {
       updated="11 August 2026"
     >
       <Prose>
+        <h2>There are two doors, and only one of them is final</h2>
+        <p>
+          Both live on the same screen in the app —{" "}
+          <strong>Settings ▸ Leave whozyo</strong>. Read this bit first, because
+          most people who think they want the second one actually want the
+          first.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Take a break</th>
+              <th>Delete my account</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nothing is removed.</td>
+              <td>Your personal information is removed for good.</td>
+            </tr>
+            <tr>
+              <td>
+                You vanish from search and nobody new can reach you. Your chats,
+                receipts, reviews and reputation stay exactly as they are.
+              </td>
+              <td>
+                You vanish from search immediately; the deletion itself runs 30
+                days later.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Reversible any time. Sign in, tap <strong>Come back</strong>.
+              </td>
+              <td>
+                Reversible for 30 days only. After that it cannot be undone.
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Never refused</strong>, whatever is open on your account.
+              </td>
+              <td>Refused while money is still open. See below.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          If what you want is to stop the notifications, stop getting new work,
+          or simply disappear for a while, <strong>take a break</strong>. It
+          costs you nothing and you can undo it in one tap. Deleting is for when
+          you want the personal information gone.
+        </p>
+
+        <h2>Before you go, look at your record</h2>
+        <p>
+          Your reputation on whozyo is the thing you built: the jobs, the
+          receipts, the reviews people wrote about you. Deleting is the one move
+          that takes it off your side for good, so it is worth opening the app
+          and reading through it before you decide — your chats, your past jobs
+          and your reviews are all still there until the deletion runs.
+        </p>
+        <p>
+          To be straight with you: <strong>we do not yet have a
+          &ldquo;download your data&rdquo; file</strong> you can save before you
+          leave. You can read your record in the app, but you cannot export it
+          in one piece. We would rather say so here than let you discover it
+          after the account is gone.
+        </p>
+
         <h2>Two ways to ask</h2>
         <h3>In the app</h3>
         <p>
           Open <strong>Settings</strong> and tap{" "}
-          <strong>Leave whozyo</strong>. That screen carries both doors:{" "}
-          <strong>Take a break</strong>, which hides you but keeps everything,
-          and <strong>Delete my account</strong>, which removes your personal
-          information for good. Deleting starts a 30-day countdown;{" "}
-          <strong>Delete now instead</strong> on the same screen skips the wait.
-          You never have to write to us to leave.
+          <strong>Leave whozyo</strong>. That screen carries both doors above.
+          Deleting starts a 30-day countdown;{" "}
+          <strong>Delete now instead</strong> on the same screen skips the wait
+          entirely. You never have to write to us to leave.
         </p>
 
         <h3>Without the app</h3>
@@ -80,10 +168,10 @@ export default function DeleteAccountPage() {
             <strong>&ldquo;Deleted user&rdquo;</strong>.
           </li>
           <li>
-            <strong>The login stored on your account.</strong> The sign-in
-            credential held against your account is deleted, and every session
-            on every device you were signed in on is ended immediately — the
-            tablet at home and the old handset in a drawer included.
+            <strong>Your sign-in, on every device.</strong> The moment you ask,
+            you are signed out everywhere — the tablet at home and the old
+            handset in a drawer included — and the email-and-password credential
+            stored against your account is deleted.
           </li>
           <li>
             <strong>Your devices.</strong> The push registrations that let us
@@ -151,33 +239,70 @@ export default function DeleteAccountPage() {
             stop someone reaching a person. Quietly undoing it on your way out
             would be a favour to nobody.
           </li>
-          <li>
-            <strong>Messages you already sent.</strong> We cannot take these
-            back. They sit in someone else&apos;s chat the same way a receipt
-            does, so if you typed a phone number into a conversation, it is
-            still in that conversation. We would rather say that here than let
-            you find it out later.
-          </li>
         </ul>
+
+        <h2>What you cannot take back at all</h2>
+        <p>
+          <strong>Messages you already sent.</strong> Deleting your account does
+          not reach into other people&apos;s chats and remove what you said to
+          them, any more than it un-sends a receipt. A message you sent sits in
+          the other person&apos;s conversation and stays there — so if you typed
+          a phone number, an address, or anything else about yourself into a
+          chat, <strong>it is still in that chat afterwards</strong>. Your name
+          on it becomes &ldquo;Deleted user&rdquo;; the words do not change.
+        </p>
+        <p>
+          This is the one thing on this page that no setting anywhere can undo,
+          which is why it has its own heading instead of a line in a list. If
+          there is something you would not want left behind, the time to deal
+          with it is before you delete.
+        </p>
 
         <h2>The 30 days, and the way back</h2>
         <p>
           The moment you ask, <strong>you go dark</strong>: you disappear from
-          search, and nobody new can find you or start anything with you. The
-          deletion itself runs <strong>30 days later</strong>.
+          search, nobody new can find you or start anything with you, and you
+          are signed out on every device. The deletion itself runs{" "}
+          <strong>30 days later</strong>.
         </p>
         <p>
-          Those 30 days are yours to change your mind in.{" "}
-          <strong>Sign in before that date and tap &ldquo;Stay on
-          whozyo&rdquo;</strong>, and everything comes back exactly as it was —
-          your chats, your record, your reputation. There is nothing to fill in
-          and nothing to ask us for.
+          You are not left counting days. From the moment you ask, the{" "}
+          <strong>Leave whozyo</strong> screen shows{" "}
+          <strong>the actual date your account will be deleted</strong> — a real
+          date such as &ldquo;10 September&rdquo;, not &ldquo;in 30
+          days&rdquo; — every time you open it.
+        </p>
+        <h3>How to stop it</h3>
+        <p>
+          Those 30 days are yours to change your mind in, and stopping the
+          deletion takes two steps:
+        </p>
+        <ol>
+          <li>
+            <strong>Sign in again.</strong> Asking to leave signed you out
+            everywhere, so you will need to sign in the normal way. Your account
+            still lets you in during these 30 days — that is the whole point of
+            them.
+          </li>
+          <li>
+            Open <strong>Settings ▸ Leave whozyo</strong> and tap{" "}
+            <strong>Stay on whozyo</strong>.
+          </li>
+        </ol>
+        <p>
+          That cancels the deletion outright — not a pause, not a new request —
+          and brings you back exactly as you were: your chats, your record, your
+          reputation, your place in search. There is nothing to fill in and
+          nothing to ask us for. Signing in on its own is not enough; you have
+          to tap the button, so that nobody who merely opens the app is treated
+          as having changed their mind.
         </p>
         <p>
-          After the 30 days there is nothing to come back to. The personal
-          information is gone, the account cannot be revived, and we will not
-          pretend otherwise. If the wait is not what you want,{" "}
-          <strong>Delete now instead</strong> in the app skips it entirely.
+          After that date the deletion runs and{" "}
+          <strong>Stay on whozyo</strong> stops working. The account cannot be
+          brought back, and we will not pretend otherwise. If the wait is not
+          what you want, <strong>Delete now instead</strong> in the app skips it
+          entirely.
         </p>
 
         <h2>When deletion has to wait</h2>
