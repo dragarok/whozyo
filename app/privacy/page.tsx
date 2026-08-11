@@ -34,9 +34,13 @@ export default function PrivacyPage() {
         <p>We collect only what the app needs to run:</p>
         <ul>
           <li>
-            <strong>Phone number</strong> — you sign in with your phone
-            number and a one-time code sent by SMS. We do not currently offer
-            sign-in with Apple, Google, or a password.
+            <strong>Your sign-in</strong> — the app has two doors, and you use
+            one of them: your <strong>phone number</strong> with a one-time
+            code sent by SMS, or an <strong>email address and password</strong>.
+            We store the phone number or email address that identifies your
+            account, and only ever a scrambled form of a password, never the
+            password itself. Sign-in with Apple or Google is not available
+            today.
           </li>
           <li>
             <strong>Profile</strong> — the display name you choose, and an
@@ -127,22 +131,29 @@ export default function PrivacyPage() {
             version of the app.
           </li>
           <li>
-            <strong>SMS provider</strong> — sending you a one-time sign-in
-            code requires sharing your phone number with an SMS delivery
-            provider for that message only.
+            <strong>SMS provider</strong> — if you use the phone door, sending
+            you a one-time sign-in code requires sharing your phone number with
+            an SMS delivery provider for that message only.
           </li>
         </ul>
 
         <h2>Data retention</h2>
         <p>
           We keep your account information for as long as your account is
-          active. Some records are shared facts between two people — a
-          settled payment receipt, an outstanding balance, or a published
-          review — and by their nature they outlive either person deleting
-          their own profile; see{" "}
-          <a href="/delete-account">deleting your account</a> for exactly
-          what that means. Beyond that, we retain data for{" "}
-          <strong>{"{{RETENTION_PERIOD}}"}</strong> unless the law requires
+          active. When you ask to delete your account, you are hidden from
+          everyone immediately and the deletion itself runs{" "}
+          <strong>30 days later</strong>, so you can change your mind by
+          signing in before that date.
+        </p>
+        <p>
+          Some records are shared facts between two people — a settled payment
+          receipt, an outstanding balance, a published review, or evidence
+          attached to a job that settled — and by their nature they outlive
+          either person deleting their own profile. Those stay, with your name
+          replaced by &ldquo;Deleted user&rdquo;. See{" "}
+          <a href="/delete-account">deleting your account</a> for the exact
+          list of what goes, what stays, and why. Beyond that, we retain data
+          for <strong>{"{{RETENTION_PERIOD}}"}</strong> unless the law requires
           otherwise.
         </p>
 
@@ -153,8 +164,9 @@ export default function PrivacyPage() {
             your profile in the app.
           </li>
           <li>
-            <strong>Deletion</strong> — you can request deletion of your
-            account and personal data. See{" "}
+            <strong>Deletion</strong> — you can delete your account and
+            personal data from inside the app (<strong>Settings ▸ Leave
+            whozyo</strong>), or ask us by email. See{" "}
             <a href="/delete-account">Delete your account</a>.
           </li>
           <li>
