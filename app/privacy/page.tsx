@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         <p>
           WhoIsYourMechanic (&ldquo;WIYM&rdquo;, &ldquo;we&rdquo;,
           &ldquo;us&rdquo;) is a mobile app, operated by{" "}
-          <strong>{"{{LEGAL_ENTITY}}"}</strong>, that connects people in Nepal
+          <strong>whozyo</strong>, that connects people in Nepal
           — starting in Kathmandu — with mechanics and other local service
           providers, and gives them a shared record of the job: the chat, the
           quote, the photos, the payment, and the review. This policy applies
@@ -120,7 +120,7 @@ export default function PrivacyPage() {
           <li>
             <strong>Our own servers and storage</strong> — today, your data is
             stored on servers and object storage we (
-            {"{{LEGAL_ENTITY}}"}) operate. We do not currently use a
+            whozyo) operate. We do not currently use a
             third-party backend-as-a-service provider.
           </li>
           <li>
@@ -142,8 +142,9 @@ export default function PrivacyPage() {
           We keep your account information for as long as your account is
           active. When you ask to delete your account, you are hidden from
           everyone immediately and the deletion itself runs{" "}
-          <strong>30 days later</strong>, so you can change your mind by
-          signing in before that date.
+          <strong>30 days later</strong>, so you can change your mind: sign in
+          before that date and tap <strong>Stay on whozyo</strong>, and the
+          deletion is cancelled.
         </p>
         <p>
           Some records are shared facts between two people — a settled payment
@@ -152,9 +153,9 @@ export default function PrivacyPage() {
           either person deleting their own profile. Those stay, with your name
           replaced by &ldquo;Deleted user&rdquo;. See{" "}
           <a href="/delete-account">deleting your account</a> for the exact
-          list of what goes, what stays, and why. Beyond that, we retain data
-          for <strong>{"{{RETENTION_PERIOD}}"}</strong> unless the law requires
-          otherwise.
+          list of what goes, what stays, and why. Beyond those shared records,
+          anything else still held once an account is deleted is kept no longer
+          than <strong>30 days</strong>, unless the law requires otherwise.
         </p>
 
         <h2>Your rights and choices</h2>
@@ -192,7 +193,7 @@ export default function PrivacyPage() {
         <p>
           Questions about this policy? Email{" "}
           <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> —
-          WhoIsYourMechanic, {"{{POSTAL_ADDRESS}}"}.
+          WhoIsYourMechanic, Lalitpur, Nepal.
         </p>
       </Prose>
     </PageShell>

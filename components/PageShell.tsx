@@ -66,7 +66,7 @@ export function PageShell({
  * by counsel — makes the draft status visible on the page itself, not just in
  * a commit message.
  */
-export function DraftBanner({ reviewer = "{{LEGAL_ENTITY}}" }: { reviewer?: string }) {
+export function DraftBanner({ reviewer = "a qualified lawyer" }: { reviewer?: string }) {
   return (
     <div
       className="card mb-2 flex items-start gap-3 border-[color:color-mix(in_srgb,var(--color-amber)_40%,transparent)] bg-[color:var(--color-amber-tint)] p-4 text-[13px] leading-relaxed"

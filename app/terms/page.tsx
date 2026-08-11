@@ -21,7 +21,7 @@ export default function TermsPage() {
       <Prose>
         <h2>1. The service</h2>
         <p>
-          WhoIsYourMechanic, operated by <strong>{"{{LEGAL_ENTITY}}"}</strong>,
+          WhoIsYourMechanic, operated by <strong>whozyo</strong>,
           is a platform that helps people in Nepal find and work with
           mechanics and other local service providers. We give you the chat,
           the quote, the evidence, the payment record, and the review — a
@@ -127,7 +127,7 @@ export default function TermsPage() {
         <h2>11. Governing law</h2>
         <p>
           These terms are governed by the laws of{" "}
-          <strong>{"{{JURISDICTION}}"}</strong>. Questions? Email{" "}
+          <strong>Nepal</strong>. Questions? Email{" "}
           <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.
         </p>
       </Prose>
