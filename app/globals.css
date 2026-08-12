@@ -162,36 +162,9 @@ body {
   transform: translateY(-1px);
 }
 
-/* ── App store badges ───────────────────────────────────────────────────── */
-.store-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.65rem 1.2rem;
-  background: var(--color-ink);
-  color: #ffffff;
-  border-radius: 14px;
-  transition: transform 0.2s ease, background 0.2s ease;
-  cursor: pointer;
-}
-.store-badge:hover {
-  transform: translateY(-1px);
-  background: #1e293b;
-}
-.store-badge .store-eyebrow {
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.7;
-  line-height: 1;
-}
-.store-badge .store-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 16px;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
+/* App store badge styles lived here. Removed with the badges themselves on
+   2026-08-12 — the app is on no store, so there is nothing to style. See
+   components/AppAvailability.tsx for why the badges went. */
 
 /* ── Card ───────────────────────────────────────────────────────────────── */
 .card {

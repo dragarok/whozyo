@@ -21,7 +21,11 @@ const FAQS = [
   },
   {
     q: "Does it work on Android phones?",
-    a: "Yes — WhoIsYourMechanic launches on Android, in Kathmandu. The app is translated into Nepali as well as English; switch languages anytime in settings.",
+    a: "Android is the only platform being built, and it is where WhoIsYourMechanic will open first, in Kathmandu. It is not on Google Play yet, so there is nothing to install today. The app is translated into Nepali as well as English; switch languages anytime in settings.",
+  },
+  {
+    q: "Is there an iPhone version?",
+    a: "No. There is no iPhone build — not in testing, not in review, not held back. The app has only ever been built for Android, and no date has been set for changing that. If you see a WhoIsYourMechanic-looking app on the App Store, it is not this one.",
   },
   {
     q: "I run a service centre. Can I onboard my team?",

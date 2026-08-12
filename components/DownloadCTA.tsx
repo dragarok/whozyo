@@ -1,4 +1,4 @@
-import { AppStoreBadges } from "./AppStoreBadges";
+import { AppAvailability } from "./AppAvailability";
 
 export function DownloadCTA() {
   return (
@@ -31,16 +31,17 @@ export function DownloadCTA() {
                 actually trust.
               </h2>
               <p className="mt-5 text-[17px] text-white/80 leading-relaxed max-w-[52ch]">
-                Download the app, scan your first QR, and watch a repair go
-                from anxious to obvious. Android, free for owners.
+                Scan a QR at the garage, watch the repair as it happens, and
+                settle with an itemised receipt that stays. Android, free for
+                owners.
               </p>
             </div>
 
             <div className="col-span-12 lg:col-span-4 lg:justify-self-end">
               <div className="flex flex-col gap-3 lg:items-end">
-                <AppStoreBadges />
+                <AppAvailability tone="on-indigo" />
                 <div className="text-[11px] font-mono uppercase tracking-wider text-white/55 lg:text-right">
-                  In testing · Free for vehicle owners
+                  Free for vehicle owners
                 </div>
               </div>
             </div>

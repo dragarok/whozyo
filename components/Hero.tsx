@@ -1,4 +1,4 @@
-import { AppStoreBadges } from "./AppStoreBadges";
+import { AppAvailability } from "./AppAvailability";
 import { Phone } from "./Phone";
 import { ClientHomeScreen, MechanicDashboardScreen } from "./PhoneScreens";
 
@@ -48,7 +48,7 @@ export function Hero() {
               className="mt-9 flex flex-wrap items-center gap-3 anim-rise"
               style={{ animationDelay: "300ms" }}
             >
-              <AppStoreBadges />
+              <AppAvailability />
             </div>
 
             {/* trust strip */}

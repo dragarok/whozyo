@@ -106,10 +106,13 @@ export default function TermsPage() {
           automatically punish anyone, hide anyone, or reverse a payment.
         </p>
         <p>
-          Reports and disputes are reviewed, and acted on where action is
-          warranted. whozyo does not promise a fixed response time or a
-          guaranteed outcome, and no automated moderation system decides these
-          matters.
+          There is no moderation team and no arbitration process. A report sent
+          to the support address is read by the person building whozyo, and that
+          is the whole of it: no fixed response time, no guaranteed outcome, and
+          nothing in the app that reverses a payment, removes a listing, or
+          penalises an account because a report was filed. What you have instead
+          is the record — the quote that was approved, the photos, and the
+          receipt — which does not change to suit either side afterwards.
         </p>
 
         <h2>8. Content you provide</h2>

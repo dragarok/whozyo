@@ -30,7 +30,7 @@ export function Footer() {
               <li><a href="/#features" className="hover:text-[color:var(--color-ink)]">Features</a></li>
               <li><a href="/service-centers" className="hover:text-[color:var(--color-ink)]">Service centers</a></li>
               <li><a href="/blog" className="hover:text-[color:var(--color-ink)]">Blog</a></li>
-              <li><a href="/#download" className="hover:text-[color:var(--color-ink)]">Download</a></li>
+              <li><a href="/#download" className="hover:text-[color:var(--color-ink)]">Availability</a></li>
             </ul>
           </div>
 

@@ -389,7 +389,7 @@ export default function PrivacyPage() {
           Passwords are stored using a slow, modern scrambling method and are
           never stored or written down in readable form. Sign-in tokens are
           stored only as a fingerprint on the server, and on your phone they are
-          held in the Android or iOS secure keystore. Each part of the database
+          held in the Android secure keystore. Each part of the database
           enforces for itself who is allowed to read a row, so a mistake in one
           screen cannot expose another person&apos;s thread.
         </p>

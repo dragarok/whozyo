@@ -20,7 +20,7 @@ export function Nav() {
         </div>
 
         <a href="/#download" className="btn-primary text-[13px] py-2.5 px-4">
-          Get the app
+          When it launches
         </a>
       </div>
     </nav>
