@@ -62,27 +62,40 @@ export function PageShell({
 }
 
 /**
- * Draft-legal-copy banner. Heads any page whose text has not yet been reviewed
- * by counsel.
+ * The standing notice that heads Privacy and Terms.
  *
- * It now says the OTHER true thing as well: whozyo is not a registered
- * business yet. That is not a hedge bolted on — it is the single most
- * load-bearing fact about how to read these pages, and burying it would be the
- * dishonest choice. The app is in testing in Nepal; the formal legal structure
- * comes after. Both halves stay until both stop being true.
+ * IT USED TO SAY TWO THINGS, and only one of them stopped being true (operator
+ * ruling, 2026-08-11: "they're live — remove the banner"). So this is not a
+ * deletion, it is a split:
+ *
+ *   REMOVED — "this text is a working draft, pending review by a qualified
+ *   lawyer". These are the live legal pages now. A permanent Draft pill on a
+ *   privacy policy undercuts the document doing the work: a visitor who reads
+ *   it can reasonably conclude none of it binds, and Play's data-safety review
+ *   will read this page at submission. The content is grounded in the code —
+ *   the media scrub, the deletion sweep, the retention lines are each traceable
+ *   to a commit — so it can stand as what it is.
+ *
+ *   KEPT — "whozyo is an app in testing, not a registered business." That is
+ *   still true, it is a STANDING CONSTRAINT (D-321: no page may imply a legal
+ *   entity exists), and it is the single most load-bearing fact about how to
+ *   read these pages. Removing the whole banner would have quietly deleted it,
+ *   which is the opposite of what "these pages are live" is supposed to mean.
+ *
+ * It goes when whozyo is actually registered, and not before.
  */
-export function DraftBanner({ reviewer = "a qualified lawyer" }: { reviewer?: string }) {
+export function DraftBanner() {
   return (
     <div
       className="card mb-2 flex items-start gap-3 border-[color:color-mix(in_srgb,var(--color-amber)_40%,transparent)] bg-[color:var(--color-amber-tint)] p-4 text-[13px] leading-relaxed"
       style={{ color: "#92400e" }}
     >
-      <span className="pill pill-amber shrink-0">Draft</span>
+      <span className="pill pill-amber shrink-0">In testing</span>
       <span>
         <strong>whozyo is an app in testing, not a registered business.</strong>{" "}
         There is no company set up behind it yet — that comes later, and this
-        page will be rewritten when it does. This text is a working draft,{" "}
-        <strong>not legal advice</strong>, and is pending review by {reviewer}.
+        page will be rewritten when it does. What it describes is what the app
+        does today.
       </span>
     </div>
   );
