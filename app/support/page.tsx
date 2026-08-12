@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 import { PageShell, Prose } from "@/components/PageShell";
 
 export const metadata: Metadata = {
   title: "Support — WhoIsYourMechanic",
-  description:
-    "Get help with WhoIsYourMechanic — account questions, deleting your account, privacy, or reporting an issue. Email support@whozyo.com.",
+  description: `Get help with WhoIsYourMechanic — account questions, deleting your account, privacy, or reporting an issue. Email ${SUPPORT_EMAIL}.`,
 };
-
-const SUPPORT_EMAIL = "support@whozyo.com";
 
 export default function SupportPage() {
   return (

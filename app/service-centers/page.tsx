@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 import { PageShell } from "@/components/PageShell";
 import { ServiceCenterDirectory } from "@/components/ServiceCenterDirectory";
 import { serviceCenters } from "@/data/service-centers";
@@ -22,7 +23,7 @@ export default function ServiceCentersPage() {
         can change — please confirm with the service center before visiting.
         Spotted something wrong or missing?{" "}
         <a
-          href="mailto:support@whozyo.com?subject=Service%20center%20directory"
+          href={`mailto:${SUPPORT_EMAIL}?subject=Service%20center%20directory`}
           className="font-semibold text-[color:var(--color-indigo-dark)] underline underline-offset-2"
         >
           Let us know

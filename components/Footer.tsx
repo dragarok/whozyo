@@ -1,4 +1,5 @@
 import { Logo } from "./Logo";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 
 export function Footer() {
   return (
@@ -48,7 +49,7 @@ export function Footer() {
             <div className="label mb-4">Contact</div>
             <ul className="space-y-2 text-[14px] text-[color:var(--color-ink-dim)] font-mono">
               <li>Kathmandu, Nepal</li>
-              <li><a href="mailto:support@whozyo.com" className="hover:text-[color:var(--color-ink)]">support@whozyo.com</a></li>
+              <li><a href={`mailto:${SUPPORT_EMAIL}`} className="hover:text-[color:var(--color-ink)]">{SUPPORT_EMAIL}</a></li>
             </ul>
           </div>
         </div>

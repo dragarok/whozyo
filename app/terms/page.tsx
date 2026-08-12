@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 import { PageShell, Prose, DraftBanner } from "@/components/PageShell";
 
 export const metadata: Metadata = {
@@ -6,8 +7,6 @@ export const metadata: Metadata = {
   description:
     "The terms that govern your use of the WhoIsYourMechanic app and website.",
 };
-
-const SUPPORT_EMAIL = "support@whozyo.com";
 
 export default function TermsPage() {
   return (

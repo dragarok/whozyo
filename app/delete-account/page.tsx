@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 import { PageShell, Prose } from "@/components/PageShell";
 
 export const metadata: Metadata = {
@@ -6,8 +7,6 @@ export const metadata: Metadata = {
   description:
     "How to delete your WhoIsYourMechanic account, in the app or by email: what is deleted, what stays and why, the 30-day window, and when deletion has to wait.",
 };
-
-const SUPPORT_EMAIL = "support@whozyo.com";
 const MAILTO = `mailto:${SUPPORT_EMAIL}?subject=Account%20deletion%20request`;
 
 /**

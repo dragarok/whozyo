@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SUPPORT_EMAIL } from "@/lib/contact";
 import { PageShell, Prose, DraftBanner } from "@/components/PageShell";
 
 export const metadata: Metadata = {
@@ -6,8 +7,6 @@ export const metadata: Metadata = {
   description:
     "What the WhoIsYourMechanic app stores, who can see it, what leaves the app, and how long it is kept.",
 };
-
-const SUPPORT_EMAIL = "support@whozyo.com";
 
 /**
  * THE PRIVACY POLICY, WRITTEN AGAINST THE CODE.
@@ -37,12 +36,23 @@ const SUPPORT_EMAIL = "support@whozyo.com";
  *  · SENTRY IS INERT for the same reason (EXPO_PUBLIC_SENTRY_DSN unset, src/obs/sentry.ts:19;
  *    backend SENTRY_DSN commented out in .env.example:126).
  *  · NO LOCATION IS TAKEN. No ACCESS_FINE/COARSE_LOCATION in any manifest, expo-location
- *    is not a dependency, and no geo column exists in the spine. BUT the backend performs
- *    ZERO EXIF stripping (grep exif → no matches; internal/api/media.go:230-272 stores
- *    bytes verbatim), so a photo's own GPS tag is a real location channel. The app's
- *    downscale usually drops it but RETURNS THE ORIGINAL on any failure
- *    (src/media/downscale.ts:97-129) — that is a bandwidth optimisation, not a privacy
- *    control, and the page must not sell it as one.
+ *    is not a dependency, and no geo column exists in the spine.
+ *  · METADATA IS STRIPPED SERVER-SIDE, BEFORE STORAGE — rewritten 2026-08-12; this bullet
+ *    said the exact opposite ("ZERO EXIF stripping... stores bytes verbatim") and was
+ *    true when written. Images landed 2026-08-11 (0601894e), audio 2026-08-12 (bdc98d2b).
+ *    internal/media/scrub.go:63 Scrubbable = {jpeg,png,webp,mp4,m4a,x-m4a} and
+ *    internal/api/media.go:48 mediaAllowlist is asserted EQUAL to it by
+ *    TestAllowlistIsExactlyWhatCanBeScrubbed — so there is no pass-through arm: every
+ *    accepted byte is scrubbed and the scrubbed bytes are what the ref addresses.
+ *    A format that cannot be promised is REFUSED 415, not stored intact (media.go:236):
+ *    image/heic (EXIF in an ISOBMFF meta box addressed by iloc offsets), audio/ogg
+ *    (CRC32 paged comment header) and audio/webm (Tags edit shifts SeekHead/Cues).
+ *    m4a is NEUTERED not deleted — offending boxes rewritten in place as zeroed `free`
+ *    boxes of identical size, so no stco/co64 offset moves (scrub_audio.go). What a
+ *    container scrub CANNOT reach, and the page says so: the encoded bitstream, the
+ *    codec config (esds/stsd), duration, and the content itself.
+ *    NO BACKFILL of pre-scrub uploads has run — the page states the two cutover dates
+ *    rather than implying old files were cleaned.
  *  · THERE IS NO "STRANGER SEES LESS" RULE. This page was briefed that a masked-name rule
  *    limits what an unconnected stranger sees. IT DOES NOT EXIST. actors.name_public
  *    DEFAULTS TO TRUE (0157_name_privacy.sql:29) — full name to every signed-in user —
@@ -56,10 +66,16 @@ const SUPPORT_EMAIL = "support@whozyo.com";
  *    (0256:175), and the sweep IS wired — main.go:205-209 starts it, hourly by default.
  *    The login binding in tier.oauth_identities is outside the spine's reach and is
  *    removed by the BACKEND (purge.go:150-170), immediately on "delete now" and by
- *    reconciliation when the 30-day purge fires. Two things genuinely survive and are
+ *    reconciliation when the 30-day purge fires. ONE thing genuinely survives and is
  *    disclosed: tier.phone_otp_sends keeps one row per number that ever requested a code
- *    (tier.sql:175, deliberately never deleted), and purged media BYTES are only flagged,
- *    never removed from storage (media.Store has no Delete method at all).
+ *    (tier.sql:175, deliberately never deleted).
+ *    MEDIA BYTES ARE NOW DELETED — rewritten 2026-08-12; this bullet said they were "only
+ *    flagged, never removed (media.Store has no Delete method at all)" and that was true
+ *    when written. media.Store now declares Delete (store.go:49, disk.go:129, s3.go:217)
+ *    and auth.DeletePurgedMediaBytes (purge.go:458) deletes the objects behind every blob
+ *    the spine marked purged — wired into the hourly sweep (purge.go:371) AND run
+ *    immediately by the delete-now door (api/account.go:224). Order is list → delete →
+ *    mark, never mark-first (D-320), so a refused delete is retried rather than lost.
  */
 export default function PrivacyPage() {
   return (
@@ -67,7 +83,7 @@ export default function PrivacyPage() {
       eyebrow="Legal"
       title="Privacy Policy"
       subtitle="What the app stores, who can see it, what leaves it, and how long it is kept. Every statement below describes what the software actually does today."
-      updated="11 August 2026"
+      updated="12 August 2026"
     >
       <DraftBanner />
       <Prose>
@@ -154,24 +170,41 @@ export default function PrivacyPage() {
           and each used only for that purpose.
         </p>
 
-        <h2>Photographs carry information of their own</h2>
+        <h2>Photographs and voice notes carry information of their own</h2>
         <p>
           A photograph taken on a phone can carry hidden details inside the
           image file itself — most importantly the <strong>GPS coordinates of
-          where it was taken</strong>, along with the time and the camera model.{" "}
-          <strong>whozyo does not remove this information on its servers.</strong>{" "}
-          A photo is stored exactly as it arrives and served exactly as it is
-          stored.
+          where it was taken</strong>, along with the time and the camera model.
+          A voice note can carry the same: some Android recorders write the
+          location of the recording straight into the audio file.
         </p>
         <p>
-          In practice the app usually shrinks a photo before sending it, and
-          shrinking it removes these hidden details as a side effect. That is a
-          size optimisation rather than a privacy protection, and it is not
-          guaranteed: if it cannot run, the original file is sent unchanged.
-          Anyone entitled to view that photograph — the other person in the job
-          — may therefore be able to read where it was taken. Treat a photograph
-          you attach as carrying that information, and this will be addressed
-          properly by stripping it on the server.
+          <strong>
+            whozyo removes this information on its servers, before the file is
+            stored.
+          </strong>{" "}
+          Every photograph and every voice note the app accepts is rewritten
+          with those hidden details stripped out, and the stripped version is
+          the only one kept — no untouched original is held anywhere, so what is
+          served is what was cleaned. Nothing is accepted that cannot be
+          cleaned: file types whose hidden details cannot be reliably removed —
+          iPhone HEIC photographs, and Ogg or WebM recordings — are refused at
+          upload rather than stored as they arrived.
+        </p>
+        <p>
+          Be clear about what that does and does not reach. Stripping removes
+          the information wrapped <em>around</em> a recording, never what is
+          inside it: the words spoken in a voice note, and whatever is visible
+          in the photograph itself, are untouched — a photograph of your house
+          is still a photograph of your house, and anyone entitled to view it
+          may recognise the place. A recording&rsquo;s length, and the technical
+          settings a player needs in order to open it, also remain.
+        </p>
+        <p>
+          One more limit worth stating: this is recent. Photographs uploaded
+          before 11 August 2026, and voice notes uploaded before 12 August 2026,
+          were stored as they arrived, and those older files have{" "}
+          <strong>not</strong> been cleaned up retrospectively.
         </p>
 
         <h2>Who can see what</h2>
@@ -363,9 +396,9 @@ export default function PrivacyPage() {
           <a href="/delete-account">Deleting your account</a> sets out the exact
           list and the reason for each item.
         </p>
-        <h3>Two things that outlast a deletion</h3>
+        <h3>One thing that outlasts a deletion</h3>
         <p>
-          These are stated because a policy that quietly omitted them would be
+          This is stated because a policy that quietly omitted it would be
           wrong:
         </p>
         <ul>
@@ -375,14 +408,13 @@ export default function PrivacyPage() {
             with codes. Deleting your account does not remove it. It is not
             linked to your profile and is not used for anything else.
           </li>
-          <li>
-            <strong>The stored image and audio files of a deleted account</strong>{" "}
-            are marked as deleted and stop being served to anyone, but removing
-            the underlying files from storage is not yet automatic. Until that
-            is built, treat those files as still present on the server after the
-            account is gone.
-          </li>
         </ul>
+        <p>
+          The photographs and voice notes of a deleted account are not on that
+          list. They stop being served immediately, and the files themselves are
+          deleted from storage — right away when you choose to delete now, and
+          otherwise by the sweep that runs when the thirty days are up.
+        </p>
 
         <h2>Keeping it safe</h2>
         <p>
