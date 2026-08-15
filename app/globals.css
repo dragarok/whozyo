@@ -41,10 +41,13 @@
   --radius-lg: 20px;
   --radius-xl: 28px;
 
-  /* Type */
-  --font-display: var(--font-space), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, monospace;
+  /* Type — Noto Sans Devanagari sits behind each Latin face so नेपाली on /ne
+     resolves per glyph instead of falling through to a system default. */
+  --font-display: var(--font-space), var(--font-devanagari), ui-sans-serif,
+    system-ui, sans-serif;
+  --font-sans: var(--font-inter), var(--font-devanagari), ui-sans-serif,
+    system-ui, sans-serif;
+  --font-mono: var(--font-mono), var(--font-devanagari), ui-monospace, monospace;
 
   /* Shadow tokens — mirror AppShadows */
   --shadow-card: 0 4px 12px 0 rgba(0, 0, 0, 0.05),

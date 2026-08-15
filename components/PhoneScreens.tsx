@@ -1,12 +1,22 @@
-/* Reusable in-phone screen compositions for hero, role section, gallery. */
+/* Reusable in-phone screen compositions for hero, role section, gallery.
+ *
+ * These are mockups of the app's own UI, and the app itself is bilingual — so
+ * they are translated too. A Nepali landing page showing English app screens
+ * would be advertising a product that doesn't exist. Copy lives in
+ * `lib/i18n/*.ts` under `screens`; vehicle models and number plates stay in
+ * Latin in both languages because that is how they are actually written. */
 
-export function ClientHomeScreen() {
+import { getDictionary, type Lang } from "@/lib/i18n";
+
+export function ClientHomeScreen({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).screens.client;
+
   return (
     <div className="space-y-4">
       <div>
-        <div className="label text-[10px]">This morning</div>
+        <div className="label text-[10px]">{t.label}</div>
         <div className="font-display text-xl text-[color:var(--color-ink)]">
-          Good morning, Roger.
+          {t.greeting}
         </div>
       </div>
 
@@ -19,27 +29,27 @@ export function ClientHomeScreen() {
             </div>
             <div>
               <div className="text-[13px] font-semibold leading-tight text-[color:var(--color-ink)]">
-                Ramesh K.
+                {t.mechanic}
               </div>
               <div className="text-[10px] font-mono text-[color:var(--color-emerald)] mt-0.5">
-                ✓ Verified · 4.9 (217)
+                {t.verified}
               </div>
             </div>
           </div>
-          <span className="pill pill-amber text-[10px]">In progress</span>
+          <span className="pill pill-amber text-[10px]">{t.status}</span>
         </div>
         <div className="text-[10px] font-mono uppercase tracking-wider text-[color:var(--color-ink-faint)]">
-          Maruti Swift · KA 4521
+          {t.vehicle}
         </div>
         <div className="text-[12px] mt-1 text-[color:var(--color-ink-dim)] leading-snug">
-          Front brake pads replaced. Awaiting rotor inspection.
+          {t.note}
         </div>
         <div className="mt-3 pt-3 border-t border-[color:var(--color-border)] flex items-center justify-between">
           <span className="text-[10px] font-mono uppercase tracking-wider text-[color:var(--color-ink-faint)]">
-            Quote · itemised
+            {t.quoteLabel}
           </span>
           <span className="font-display text-base text-[color:var(--color-indigo-dark)]">
-            Nrs. 3,200
+            {t.amount}
           </span>
         </div>
       </div>
@@ -51,10 +61,10 @@ export function ClientHomeScreen() {
         </div>
         <div className="flex-1">
           <div className="text-[12px] font-semibold text-[color:var(--color-ink)]">
-            Pair with a mechanic
+            {t.qrTitle}
           </div>
           <div className="text-[10px] text-[color:var(--color-ink-dim)]">
-            Scan their QR · 10-second handshake
+            {t.qrSub}
           </div>
         </div>
       </div>
@@ -62,43 +72,38 @@ export function ClientHomeScreen() {
   );
 }
 
-export function MechanicDashboardScreen() {
+export function MechanicDashboardScreen({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).screens.mechanic;
+  const TONES = ["amber", "indigo", "emerald"] as const;
+
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <div className="label text-[10px]">Today</div>
+          <div className="label text-[10px]">{t.label}</div>
           <div className="font-display text-xl text-[color:var(--color-ink)]">
-            4 active jobs
+            {t.heading}
           </div>
         </div>
         <div className="flex items-center gap-1.5 pill pill-emerald text-[10px]">
           <span className="size-1.5 rounded-full bg-[color:var(--color-emerald)] live-dot" />
-          On
+          {t.on}
         </div>
       </div>
 
       {/* mini stats row */}
       <div className="grid grid-cols-3 gap-2">
-        {[
-          ["4", "Active"],
-          ["12", "This wk"],
-          ["4.9", "Rating"],
-        ].map(([v, k]) => (
-          <div key={k} className="card p-2.5 text-center">
-            <div className="font-display text-lg text-[color:var(--color-ink)]">{v}</div>
-            <div className="text-[9px] font-mono uppercase tracking-wider text-[color:var(--color-ink-faint)]">{k}</div>
+        {t.stats.map((s) => (
+          <div key={s.k} className="card p-2.5 text-center">
+            <div className="font-display text-lg text-[color:var(--color-ink)]">{s.v}</div>
+            <div className="text-[9px] font-mono uppercase tracking-wider text-[color:var(--color-ink-faint)]">{s.k}</div>
           </div>
         ))}
       </div>
 
       {/* job list */}
       <div className="space-y-2">
-        {[
-          { name: "Maruti Swift", reg: "KA 4521", status: "In progress", tone: "amber" as const },
-          { name: "Honda Civic", reg: "BA 8807", status: "Awaiting quote", tone: "indigo" as const },
-          { name: "Tata Nexon", reg: "LU 1129", status: "Paid", tone: "emerald" as const },
-        ].map((j) => (
+        {t.jobs.map((j, i) => (
           <div
             key={j.reg}
             className="card p-3 flex items-center justify-between"
@@ -111,7 +116,9 @@ export function MechanicDashboardScreen() {
                 {j.reg}
               </div>
             </div>
-            <span className={`pill pill-${j.tone} text-[9px]`}>{j.status}</span>
+            <span className={`pill pill-${TONES[i % TONES.length]} text-[9px]`}>
+              {j.status}
+            </span>
           </div>
         ))}
       </div>
@@ -119,35 +126,34 @@ export function MechanicDashboardScreen() {
   );
 }
 
-export function QuoteScreen() {
+export function QuoteScreen({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).screens.quote;
+  // Tag text is translated, so the colour can no longer key off the label —
+  // it keys off position in the quote instead: part, part, labour, fee.
+  const TAGS = [
+    { text: t.tagPart, cls: "text-[color:var(--color-indigo-dark)]" },
+    { text: t.tagPart, cls: "text-[color:var(--color-indigo-dark)]" },
+    { text: t.tagLabour, cls: "text-[color:var(--color-emerald)]" },
+    { text: t.tagFee, cls: "text-[color:var(--color-amber)]" },
+  ];
+
   return (
     <div className="space-y-4">
       <div>
-        <div className="label text-[10px]">Quote · awaiting your approval</div>
+        <div className="label text-[10px]">{t.label}</div>
         <div className="font-display text-xl text-[color:var(--color-ink)] mt-1">
-          Front brake job
+          {t.heading}
         </div>
       </div>
 
       <div className="card p-4 space-y-2.5">
-        {[
-          { label: "Brake pad set (front)", v: "Nrs. 2,400", tag: "Part" },
-          { label: "Brake fluid (top-up)", v: "Nrs. 180", tag: "Part" },
-          { label: "Labour · 1.2 h", v: "Nrs. 720", tag: "Labour" },
-          { label: "Disposal fee", v: "Nrs. 80", tag: "Fee" },
-        ].map((l) => (
+        {t.lines.map((l, i) => (
           <div key={l.label} className="flex items-center justify-between text-[11px]">
             <div className="flex items-center gap-2 text-[color:var(--color-ink-dim)]">
               <span
-                className={`text-[8px] font-mono uppercase tracking-wider w-12 ${
-                  l.tag === "Part"
-                    ? "text-[color:var(--color-indigo-dark)]"
-                    : l.tag === "Labour"
-                    ? "text-[color:var(--color-emerald)]"
-                    : "text-[color:var(--color-amber)]"
-                }`}
+                className={`text-[8px] font-mono uppercase tracking-wider w-12 shrink-0 ${TAGS[i].cls}`}
               >
-                {l.tag}
+                {TAGS[i].text}
               </span>
               <span>{l.label}</span>
             </div>
@@ -156,105 +162,103 @@ export function QuoteScreen() {
         ))}
         <div className="border-t border-[color:var(--color-border)] pt-3 mt-2 flex items-center justify-between">
           <span className="text-[10px] font-mono uppercase tracking-wider text-[color:var(--color-ink-faint)]">
-            Total
+            {t.totalLabel}
           </span>
           <span className="font-display text-lg text-[color:var(--color-indigo-dark)]">
-            Nrs. 3,380
+            {t.total}
           </span>
         </div>
       </div>
 
       <div className="grid grid-cols-2 gap-2">
         <button className="rounded-full bg-[color:var(--color-indigo)] text-white text-[11px] font-semibold py-2.5">
-          Approve
+          {t.approve}
         </button>
         <button className="rounded-full bg-white border border-[color:var(--color-border)] text-[color:var(--color-ink)] text-[11px] font-semibold py-2.5">
-          Discuss
+          {t.discuss}
         </button>
       </div>
     </div>
   );
 }
 
-export function ServiceCenterScreen() {
+export function ServiceCenterScreen({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).screens.workshop;
+  // Last member of the mock team is off shift — the dot goes grey.
+  const lastIndex = t.team.length - 1;
+
   return (
     <div className="space-y-4">
       <div>
-        <div className="label text-[10px]">Workshop · Today</div>
+        <div className="label text-[10px]">{t.label}</div>
         <div className="font-display text-xl text-[color:var(--color-ink)] mt-1">
-          Auto Care Patan
+          {t.heading}
         </div>
       </div>
 
       {/* big tiles */}
       <div className="grid grid-cols-3 gap-2">
-        {[
-          ["08", "In bay"],
-          ["12", "Waiting"],
-          ["06", "Done"],
-        ].map(([v, k]) => (
-          <div key={k} className="card-tinted p-3 text-center">
-            <div className="font-display text-2xl text-[color:var(--color-indigo-dark)]">{v}</div>
-            <div className="text-[9px] font-mono uppercase tracking-wider text-[color:var(--color-ink-faint)] mt-1">{k}</div>
+        {t.tiles.map((tile) => (
+          <div key={tile.k} className="card-tinted p-3 text-center">
+            <div className="font-display text-2xl text-[color:var(--color-indigo-dark)]">{tile.v}</div>
+            <div className="text-[9px] font-mono uppercase tracking-wider text-[color:var(--color-ink-faint)] mt-1">{tile.k}</div>
           </div>
         ))}
       </div>
 
       {/* mechanics */}
       <div>
-        <div className="label text-[10px] mb-2">Team on shift</div>
+        <div className="label text-[10px] mb-2">{t.teamLabel}</div>
         <div className="space-y-2">
-          {[
-            { name: "Ramesh K.", load: "2 jobs", on: true },
-            { name: "Suresh M.", load: "1 job", on: true },
-            { name: "Bikash T.", load: "Off", on: false },
-          ].map((m) => (
-            <div
-              key={m.name}
-              className="card p-2.5 flex items-center justify-between"
-            >
-              <div className="flex items-center gap-2.5">
-                <div className="size-7 rounded-full bg-[color:var(--color-indigo-tint)] text-[color:var(--color-indigo-dark)] grid place-items-center text-[11px] font-bold">
-                  {m.name[0]}
-                </div>
-                <div>
-                  <div className="text-[12px] font-semibold text-[color:var(--color-ink)] leading-tight">
-                    {m.name}
+          {t.team.map((m, i) => {
+            const on = i !== lastIndex;
+            return (
+              <div
+                key={m.name}
+                className="card p-2.5 flex items-center justify-between"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div className="size-7 rounded-full bg-[color:var(--color-indigo-tint)] text-[color:var(--color-indigo-dark)] grid place-items-center text-[11px] font-bold">
+                    {m.name[0]}
                   </div>
-                  <div className="text-[9px] font-mono text-[color:var(--color-ink-faint)] mt-0.5">
-                    {m.load}
+                  <div>
+                    <div className="text-[12px] font-semibold text-[color:var(--color-ink)] leading-tight">
+                      {m.name}
+                    </div>
+                    <div className="text-[9px] font-mono text-[color:var(--color-ink-faint)] mt-0.5">
+                      {m.load}
+                    </div>
                   </div>
                 </div>
+                <span
+                  className={`size-2 rounded-full ${
+                    on
+                      ? "bg-[color:var(--color-emerald)] live-dot"
+                      : "bg-[color:var(--color-ink-ghost)]"
+                  }`}
+                />
               </div>
-              <span
-                className={`size-2 rounded-full ${
-                  m.on
-                    ? "bg-[color:var(--color-emerald)] live-dot"
-                    : "bg-[color:var(--color-ink-ghost)]"
-                }`}
-              />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-export function VehicleScreen() {
+export function VehicleScreen({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).screens.vehicle;
+
   return (
     <div className="space-y-4">
       <div>
-        <div className="label text-[10px]">My garage</div>
+        <div className="label text-[10px]">{t.label}</div>
         <div className="font-display text-xl text-[color:var(--color-ink)] mt-1">
-          2 vehicles
+          {t.heading}
         </div>
       </div>
 
-      {[
-        { name: "Maruti Swift", reg: "KA 4521", year: "2019", km: "48,210 km" },
-        { name: "Honda Activa", reg: "BA 8807", year: "2022", km: "12,950 km" },
-      ].map((v) => (
+      {t.vehicles.map((v) => (
         <div key={v.reg} className="card p-4">
           <div className="flex items-center justify-between">
             <div>
@@ -271,10 +275,10 @@ export function VehicleScreen() {
           </div>
           <div className="mt-3 pt-3 border-t border-[color:var(--color-border)] flex items-center justify-between">
             <span className="text-[10px] font-mono uppercase tracking-wider text-[color:var(--color-ink-faint)]">
-              Last service
+              {t.lastServiceLabel}
             </span>
             <span className="text-[10px] text-[color:var(--color-ink-dim)]">
-              12 Mar · Brake pads
+              {v.lastService}
             </span>
           </div>
         </div>

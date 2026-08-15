@@ -1,68 +1,24 @@
 import { Phone } from "./Phone";
+import { Lines } from "./Lines";
 import {
   ClientHomeScreen,
   MechanicDashboardScreen,
   ServiceCenterScreen,
 } from "./PhoneScreens";
+import { getDictionary, type Lang } from "@/lib/i18n";
 
-type Role = {
-  badge: string;
-  badgeTone: "indigo" | "emerald" | "amber";
-  title: string;
-  sub: string;
-  bullets: string[];
-  screen: React.ReactNode;
-};
+/* Badge tone and phone screen are presentation, not copy — they stay here and
+   line up with the three roles in `lib/i18n/*.ts` by position. */
+const TONE_BADGE = ["pill pill-indigo", "pill pill-emerald", "pill pill-amber"];
 
-const ROLES: Role[] = [
-  {
-    badge: "For owners",
-    badgeTone: "indigo",
-    title: "Hand over the keys with confidence.",
-    sub: "Scan a QR, read the mechanic's record of settled jobs, follow every step of the repair from your phone — and approve the itemised quote before any work begins.",
-    bullets: [
-      "Profiles built from settled jobs and receipt-bound reviews",
-      "Live photo timeline of every part removed",
-      "Itemised quotes — parts, labour, fees, broken down",
-      "A permanent, itemised receipt for every job",
-    ],
-    screen: <ClientHomeScreen />,
-  },
-  {
-    badge: "For mechanics",
-    badgeTone: "emerald",
-    title: "Build a name that travels with you.",
-    sub: "Every job you complete adds to a public record only you own. No middlemen, no fake reviews, no arguing about what the quote said — just your work, well documented.",
-    bullets: [
-      "QR-paired bookings — no phone numbers traded",
-      "Tap to mark yourself available for the day",
-      "Send itemised quotes in seconds",
-      "A record of every bill and receipt, in one place",
-    ],
-    screen: <MechanicDashboardScreen />,
-  },
-  {
-    badge: "For workshops",
-    badgeTone: "amber",
-    title: "See the whole team on one screen.",
-    sub: "Your mechanics join by scanning a QR. You see who's carrying what today, and you hand a job to one named mechanic — so the customer knows whose hands their vehicle is in.",
-    bullets: [
-      "Mechanics join by QR — never by being looked up",
-      "Every mechanic's load for the day, at a glance",
-      "Assign a job to one named mechanic",
-      "Shop-wide jobs, quotes, and receipts in one record",
-    ],
-    screen: <ServiceCenterScreen />,
-  },
-];
+export function ThreeRoles({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).roles;
+  const SCREENS = [
+    <ClientHomeScreen key="client" lang={lang} />,
+    <MechanicDashboardScreen key="mechanic" lang={lang} />,
+    <ServiceCenterScreen key="workshop" lang={lang} />,
+  ];
 
-const TONE_BADGE: Record<Role["badgeTone"], string> = {
-  indigo: "pill pill-indigo",
-  emerald: "pill pill-emerald",
-  amber: "pill pill-amber",
-};
-
-export function ThreeRoles() {
   return (
     <section
       id="roles"
@@ -70,21 +26,17 @@ export function ThreeRoles() {
     >
       <div className="mx-auto max-w-[1240px] px-5 md:px-8">
         <header className="max-w-[760px] mb-16">
-          <span className="eyebrow">One app · three ways to use it</span>
+          <span className="eyebrow">{t.eyebrow}</span>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.05] mt-4 text-[color:var(--color-ink)]">
-            Built for everyone in the
-            <br />
-            repair chain.
+            <Lines lines={t.headingLines} />
           </h2>
           <p className="mt-5 text-[17px] text-[color:var(--color-ink-dim)] leading-relaxed max-w-[60ch]">
-            Whether you're handing over the keys, holding the wrench, or
-            running the workshop — one app, which shows you the screens for
-            your actual job rather than a one-size-fits-all template.
+            {t.sub}
           </p>
         </header>
 
         <div className="space-y-20 md:space-y-28">
-          {ROLES.map((r, i) => (
+          {t.items.map((r, i) => (
             <div
               key={r.title}
               className="grid grid-cols-12 gap-8 lg:gap-14 items-center"
@@ -97,7 +49,9 @@ export function ThreeRoles() {
               >
                 <div className="relative h-[560px] flex items-center justify-center">
                   <div className="absolute size-[420px] halo-indigo -z-10" />
-                  <Phone tilt={i % 2 === 0 ? "right" : "left"}>{r.screen}</Phone>
+                  <Phone tilt={i % 2 === 0 ? "right" : "left"}>
+                    {SCREENS[i]}
+                  </Phone>
                 </div>
               </div>
 
@@ -107,7 +61,7 @@ export function ThreeRoles() {
                   i % 2 === 1 ? "lg:order-1" : ""
                 }`}
               >
-                <span className={`${TONE_BADGE[r.badgeTone]}`}>{r.badge}</span>
+                <span className={TONE_BADGE[i]}>{r.badge}</span>
                 <h3 className="font-display text-3xl md:text-5xl tracking-tight leading-tight mt-4 text-[color:var(--color-ink)] max-w-[20ch]">
                   {r.title}
                 </h3>

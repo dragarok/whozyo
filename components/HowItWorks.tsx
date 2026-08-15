@@ -1,35 +1,15 @@
-const STEPS = [
-  {
-    n: "01",
-    title: "Scan the QR.",
-    body:
-      "Search the directory, or scan the mechanic's QR when you're standing in front of them. The handshake takes ten seconds — no phone numbers traded.",
-    icon: <QrIcon />,
-  },
-  {
-    n: "02",
-    title: "Approve an itemised quote.",
-    body:
-      "Parts, labour, fees — every line of the quote is itemised so you know exactly what you're paying for before any work begins.",
-    icon: <QuoteIcon />,
-  },
-  {
-    n: "03",
-    title: "Watch the work.",
-    body:
-      "Photos of every part removed, every fluid drained, every check passed — added to a live timeline you can follow from anywhere.",
-    icon: <CameraIcon />,
-  },
-  {
-    n: "04",
-    title: "Settle up & keep the record.",
-    body:
-      "Get a permanent itemised receipt once you've paid, and leave a review that's bound to the job — so it actually means something.",
-    icon: <ReceiptIcon />,
-  },
-];
+import { Lines } from "./Lines";
+import { getDictionary, type Lang } from "@/lib/i18n";
 
-export function HowItWorks() {
+/* Step numerals and icons are presentation, not copy — they line up with the
+   four steps in `lib/i18n/*.ts` by position. The numerals stay Western in both
+   languages: they are an ordinal ornament, not a quantity to read. */
+const STEP_NUMBERS = ["01", "02", "03", "04"];
+const STEP_ICONS = [<QrIcon key="qr" />, <QuoteIcon key="quote" />, <CameraIcon key="camera" />, <ReceiptIcon key="receipt" />];
+
+export function HowItWorks({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).how;
+
   return (
     <section
       id="how"
@@ -37,30 +17,26 @@ export function HowItWorks() {
     >
       <div className="mx-auto max-w-[1240px] px-5 md:px-8">
         <header className="max-w-[760px] mb-16">
-          <span className="eyebrow">How it works</span>
+          <span className="eyebrow">{t.eyebrow}</span>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.05] mt-4 text-[color:var(--color-ink)]">
-            From scan to receipt
-            <br />
-            in four taps.
+            <Lines lines={t.headingLines} />
           </h2>
           <p className="mt-5 text-[17px] text-[color:var(--color-ink-dim)] leading-relaxed max-w-[60ch]">
-            No more hunting for an honest mechanic. No more wondering what
-            you're really paying for. Just a clean four-step flow that puts
-            the receipt back in your hands.
+            {t.sub}
           </p>
         </header>
 
         <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {STEPS.map((s) => (
+          {t.steps.map((s, i) => (
             <li
-              key={s.n}
+              key={s.title}
               className="card p-7 relative group hover:shadow-[var(--shadow-elevated)] transition-shadow duration-500"
             >
               <div className="absolute top-7 right-7 font-mono text-[11px] font-semibold tracking-widest text-[color:var(--color-ink-faint)]">
-                {s.n}
+                {STEP_NUMBERS[i]}
               </div>
               <div className="size-12 rounded-2xl bg-[color:var(--color-indigo-tint)] grid place-items-center text-[color:var(--color-indigo-dark)] group-hover:bg-[color:var(--color-indigo)] group-hover:text-white transition-colors duration-500">
-                {s.icon}
+                {STEP_ICONS[i]}
               </div>
               <h3 className="font-display text-xl mt-5 text-[color:var(--color-ink)] tracking-tight">
                 {s.title}

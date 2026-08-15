@@ -24,14 +24,19 @@
 //
 // If and when net.whozyo.app is listed, link it by that package id.
 
+import { getDictionary, type Lang } from "@/lib/i18n";
+
 export function AppAvailability({
   tone = "light",
   className = "",
+  lang = "en",
 }: {
   tone?: "light" | "on-indigo";
   className?: string;
+  lang?: Lang;
 }) {
   const onIndigo = tone === "on-indigo";
+  const t = getDictionary(lang).availability;
 
   return (
     <div
@@ -65,11 +70,9 @@ export function AppAvailability({
               : "font-semibold text-[color:var(--color-ink)]"
           }
         >
-          You can&apos;t download it yet.
+          {t.strong}
         </strong>{" "}
-        WhoIsYourMechanic is still in testing in Kathmandu and is not on Google
-        Play. There is no iPhone version, and no date has been set for one. When
-        there is something to install, the link will be on this page.
+        {t.body}
       </p>
     </div>
   );

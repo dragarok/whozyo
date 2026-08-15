@@ -1,6 +1,10 @@
 import { AppAvailability } from "./AppAvailability";
+import { Lines } from "./Lines";
+import { getDictionary, type Lang } from "@/lib/i18n";
 
-export function DownloadCTA() {
+export function DownloadCTA({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).download;
+
   return (
     <section
       id="download"
@@ -23,25 +27,21 @@ export function DownloadCTA() {
             <div className="col-span-12 lg:col-span-8">
               <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 backdrop-blur text-white/90 font-semibold text-[12px] tracking-[0.06em] uppercase">
                 <span className="size-1.5 rounded-full bg-[color:var(--color-emerald-soft)] live-dot" />
-                Launching in Kathmandu
+                {t.badge}
               </span>
               <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.02] mt-4 text-white">
-                Find a mechanic you can
-                <br />
-                actually trust.
+                <Lines lines={t.headingLines} />
               </h2>
               <p className="mt-5 text-[17px] text-white/80 leading-relaxed max-w-[52ch]">
-                Scan a QR at the garage, watch the repair as it happens, and
-                settle with an itemised receipt that stays. Android, free for
-                owners.
+                {t.sub}
               </p>
             </div>
 
             <div className="col-span-12 lg:col-span-4 lg:justify-self-end">
               <div className="flex flex-col gap-3 lg:items-end">
-                <AppAvailability tone="on-indigo" />
+                <AppAvailability tone="on-indigo" lang={lang} />
                 <div className="text-[11px] font-mono uppercase tracking-wider text-white/55 lg:text-right">
-                  Free for vehicle owners
+                  {t.note}
                 </div>
               </div>
             </div>

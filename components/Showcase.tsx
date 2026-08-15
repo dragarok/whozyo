@@ -1,12 +1,23 @@
 import { Phone } from "./Phone";
+import { Lines } from "./Lines";
 import {
   ClientHomeScreen,
   QuoteScreen,
   VehicleScreen,
   MechanicDashboardScreen,
 } from "./PhoneScreens";
+import { getDictionary, type Lang } from "@/lib/i18n";
 
-export function Showcase() {
+export function Showcase({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).showcase;
+  /* Screens line up with `showcase.captions` in `lib/i18n/*.ts` by position. */
+  const SCREENS = [
+    <ClientHomeScreen key="client" lang={lang} />,
+    <QuoteScreen key="quote" lang={lang} />,
+    <VehicleScreen key="vehicle" lang={lang} />,
+    <MechanicDashboardScreen key="mechanic" lang={lang} />,
+  ];
+
   return (
     <section
       id="screens"
@@ -18,32 +29,24 @@ export function Showcase() {
       <div className="mx-auto max-w-[1240px] px-5 md:px-8">
         <header className="max-w-[760px] mb-16">
           <span className="eyebrow !bg-white/10 !text-[color:var(--color-indigo-soft)]">
-            A look inside
+            {t.eyebrow}
           </span>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.05] mt-4 text-white">
-            Quietly powerful.
-            <br />
-            Loudly transparent.
+            <Lines lines={t.headingLines} />
           </h2>
           <p className="mt-5 text-[17px] text-white/65 leading-relaxed max-w-[60ch]">
-            Designed to disappear when you don't need it, and to show you
-            exactly what's happening when you do.
+            {t.sub}
           </p>
         </header>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {[
-            { screen: <ClientHomeScreen />, caption: "Your jobs at a glance" },
-            { screen: <QuoteScreen />, caption: "Approve the itemised quote" },
-            { screen: <VehicleScreen />, caption: "Every vehicle's history" },
-            { screen: <MechanicDashboardScreen />, caption: "Mechanic dashboard" },
-          ].map((p, i) => (
-            <div key={i} className="flex flex-col items-center gap-4">
+          {t.captions.map((caption, i) => (
+            <div key={caption} className="flex flex-col items-center gap-4">
               <div className="w-full float-y" style={{ animationDelay: `${i * 0.4}s` }}>
-                <Phone>{p.screen}</Phone>
+                <Phone>{SCREENS[i]}</Phone>
               </div>
               <div className="text-[12px] font-mono uppercase tracking-wider text-white/55 text-center">
-                {p.caption}
+                {caption}
               </div>
             </div>
           ))}

@@ -1,68 +1,5 @@
-const FEATURES = [
-  {
-    title: "QR pairing",
-    body:
-      "A ten-second QR scan creates a direct link between you and your mechanic. No phone numbers exchanged, no contact-saving, no spam.",
-    tone: "indigo" as const,
-    icon: <QrIcon />,
-  },
-  {
-    title: "Itemised quotes",
-    body:
-      "Every quote breaks down into parts, labour, and fees — line by line. No 'service charges,' no surprises at the till.",
-    tone: "indigo" as const,
-    icon: <ListIcon />,
-  },
-  {
-    title: "Photo timeline",
-    body:
-      "The mechanic snaps before-and-after as the work goes. The photos attach to the job and stay attached to it — they are part of the record, not a message either side can take back.",
-    tone: "emerald" as const,
-    icon: <CameraIcon />,
-  },
-  {
-    title: "Receipt-bound reviews",
-    body:
-      "A review can only be written by the person who was on the other side of a settled job — and once written, neither party can edit or delete it. No fake stars, no review-farms, no removal-as-a-service.",
-    tone: "emerald" as const,
-    icon: <StarIcon />,
-  },
-  {
-    title: "Vehicle garage",
-    body:
-      "Add every car, bike, and scooter you own. Every service, every part, every km — saved against the vehicle's record.",
-    tone: "amber" as const,
-    icon: <CarIcon />,
-  },
-  {
-    title: "One clear bill",
-    body:
-      "The itemised bill and payment record live in the app, so there's one place to check what you owe and what you've paid — however you settle it with the mechanic.",
-    tone: "amber" as const,
-    icon: <WalletIcon />,
-  },
-  {
-    title: "EN + नेपाली",
-    body:
-      "The app speaks English and Nepali, day one. Switch languages anytime — every label, every screen, dates in Bikram Sambat.",
-    tone: "indigo" as const,
-    icon: <GlobeIcon />,
-  },
-  {
-    title: "Workshop team view",
-    body:
-      "A service centre sees its mechanics and what each is carrying today, and assigns a job to one named mechanic. Staff join by scanning a QR — never by being looked up.",
-    tone: "emerald" as const,
-    icon: <DashIcon />,
-  },
-  {
-    title: "Service history",
-    body:
-      "Every quote, photo, payment, and mechanic note for every job — kept in the vehicle's record, recoverable any time.",
-    tone: "amber" as const,
-    icon: <HistoryIcon />,
-  },
-];
+import { Lines } from "./Lines";
+import { getDictionary, type Lang } from "@/lib/i18n";
 
 const TONE: Record<string, string> = {
   indigo:
@@ -72,7 +9,23 @@ const TONE: Record<string, string> = {
   amber: "bg-[color:var(--color-amber-tint)] text-[#92400e]",
 };
 
-export function Features() {
+/* Icon and tile tone are presentation, not copy — they line up with the nine
+   features in `lib/i18n/*.ts` by position. */
+const CHROME = [
+  { tone: "indigo", icon: <QrIcon /> },
+  { tone: "indigo", icon: <ListIcon /> },
+  { tone: "emerald", icon: <CameraIcon /> },
+  { tone: "emerald", icon: <StarIcon /> },
+  { tone: "amber", icon: <CarIcon /> },
+  { tone: "amber", icon: <WalletIcon /> },
+  { tone: "indigo", icon: <GlobeIcon /> },
+  { tone: "emerald", icon: <DashIcon /> },
+  { tone: "amber", icon: <HistoryIcon /> },
+];
+
+export function Features({ lang = "en" }: { lang?: Lang }) {
+  const t = getDictionary(lang).features;
+
   return (
     <section
       id="features"
@@ -80,26 +33,23 @@ export function Features() {
     >
       <div className="mx-auto max-w-[1240px] px-5 md:px-8">
         <header className="max-w-[760px] mb-16">
-          <span className="eyebrow">Everything in the box</span>
+          <span className="eyebrow">{t.eyebrow}</span>
           <h2 className="font-display text-4xl md:text-6xl tracking-tight leading-[1.05] mt-4 text-[color:var(--color-ink)]">
-            Designed for the real
-            <br />
-            way repairs happen.
+            <Lines lines={t.headingLines} />
           </h2>
           <p className="mt-5 text-[17px] text-[color:var(--color-ink-dim)] leading-relaxed max-w-[60ch]">
-            Nine features that turn an opaque, anxious experience into
-            something you'd actually recommend to your family.
+            {t.sub}
           </p>
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {FEATURES.map((f) => (
+          {t.items.map((f, i) => (
             <div
               key={f.title}
               className="card p-7 hover:shadow-[var(--shadow-elevated)] hover:-translate-y-0.5 transition-all duration-300"
             >
-              <div className={`size-11 rounded-xl grid place-items-center ${TONE[f.tone]}`}>
-                {f.icon}
+              <div className={`size-11 rounded-xl grid place-items-center ${TONE[CHROME[i].tone]}`}>
+                {CHROME[i].icon}
               </div>
               <h3 className="font-display text-xl tracking-tight mt-5 text-[color:var(--color-ink)]">
                 {f.title}
