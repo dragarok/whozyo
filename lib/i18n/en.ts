@@ -14,7 +14,7 @@ export const en = {
     serviceCenters: "Service centers",
     blog: "Blog",
     forMechanics: "For mechanics",
-    cta: "When it launches",
+    cta: "Install the app",
     languageLabel: "Language",
     // Shown on links whose destination has no Nepali version yet.
     englishOnly: "in English",
@@ -22,14 +22,14 @@ export const en = {
 
   /* ── availability notice (hero + download CTA) ────────────────────────── */
   availability: {
-    strong: "You can't download it yet.",
+    strong: "You can install it now.",
     body:
-      "WhoIsYourMechanic is still in testing in Kathmandu and is not on Google Play. There is no iPhone version, and no date has been set for one. When there is something to install, the link will be on this page.",
+      "WhoIsYourMechanic is on Google Play and the App Store, free for vehicle owners. Open whozyo.com/get on your phone and it opens the right store for you; on a computer it shows a QR to scan.",
   },
 
   /* ── hero ─────────────────────────────────────────────────────────────── */
   hero: {
-    eyebrow: "Launching in Kathmandu · Android",
+    eyebrow: "Live in Kathmandu · Android & iPhone",
     // Rendered as: lines joined by <br/>, then a space, then the accented word.
     headingLines: ["Know who fixes", "your"],
     headingAccent: "vehicle.",
@@ -280,11 +280,11 @@ export const en = {
       },
       {
         q: "Does it work on Android phones?",
-        a: "Android is the only platform being built, and it is where WhoIsYourMechanic will open first, in Kathmandu. It is not on Google Play yet, so there is nothing to install today. The app is translated into Nepali as well as English; switch languages anytime in settings.",
+        a: "Yes. WhoIsYourMechanic is on Google Play, free for vehicle owners, and Kathmandu is where it opens first. The app is translated into Nepali as well as English; switch languages anytime in settings.",
       },
       {
         q: "Is there an iPhone version?",
-        a: "No. There is no iPhone build — not in testing, not in review, not held back. The app has only ever been built for Android, and no date has been set for changing that. If you see a WhoIsYourMechanic-looking app on the App Store, it is not this one.",
+        a: "Yes — it is on the App Store as well as Google Play. The surest way to get the right one either way is whozyo.com/get: open it on the phone you are installing on and it takes you straight to that phone's store, so you never have to search a store by name.",
       },
       {
         q: "I run a service centre. Can I onboard my team?",
@@ -298,8 +298,9 @@ export const en = {
     badge: "Launching in Kathmandu",
     headingLines: ["Find a mechanic you can", "actually trust."],
     sub:
-      "Scan a QR at the garage, watch the repair as it happens, and settle with an itemised receipt that stays. Android, free for owners.",
+      "Scan a QR at the garage, watch the repair as it happens, and settle with an itemised receipt that stays. Android and iPhone, free for owners.",
     note: "Free for vehicle owners",
+    installCta: "Install the app",
   },
 
   /* ── footer ───────────────────────────────────────────────────────────── */

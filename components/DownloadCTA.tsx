@@ -39,6 +39,12 @@ export function DownloadCTA({ lang = "en" }: { lang?: Lang }) {
 
             <div className="col-span-12 lg:col-span-4 lg:justify-self-end">
               <div className="flex flex-col gap-3 lg:items-end">
+                <a
+                  href="/get"
+                  className="btn-primary bg-white text-[color:var(--color-indigo-dark)] hover:bg-white/90 text-[15px]"
+                >
+                  {t.installCta}
+                </a>
                 <AppAvailability tone="on-indigo" lang={lang} />
                 <div className="text-[11px] font-mono uppercase tracking-wider text-white/55 lg:text-right">
                   {t.note}
