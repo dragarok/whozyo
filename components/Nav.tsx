@@ -41,7 +41,7 @@ export function Nav({ lang = "en" }: { lang?: Lang }) {
         <div className="flex items-center gap-2.5">
           <LanguageSwitcher lang={lang} label={t.languageLabel} />
           <a
-            href={homeAnchor(lang, "download")}
+            href="/get"
             className="btn-primary text-[13px] py-2.5 px-4 whitespace-nowrap"
           >
             {t.cta}

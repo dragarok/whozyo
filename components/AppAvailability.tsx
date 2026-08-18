@@ -1,28 +1,26 @@
-// This file deliberately contains NO store links, and none should be added back
-// until the app this project actually builds is actually listed.
+
+// The store-availability notice, rendered in the hero and the download CTA.
 //
-// What stood here until 2026-08-12 were two store badges:
+// ## History, because this file has been reversed twice
 //
-//   App Store  → apps.apple.com/us/app/wiym-vehicle-service-tracker/id6769426409
-//   Google Play → play.google.com/store/apps/details?id=com.whozyo.mechanic
+// Until 2026-08-12 this carried two store badges. They were removed on the
+// reasoning that both listings pointed at a different product: the app "this
+// project builds" was taken to be `net.whozyo.app`, the Expo project in
+// `whozyo_app`, which has no iOS target and has never been published.
 //
-// Both URLs resolve (HTTP 200, verified live), and an earlier revert kept them
-// on exactly that reasoning. Resolving is not the test. Reading the listings:
-// the Apple one is "WIYM: Vehicle Service Tracker" by "Aakash Regmi"; the Play
-// one is "WIYM", package com.whozyo.mechanic. The app this project builds is
-// net.whozyo.app (whozyo_app/android/app/build.gradle:111 and app.json), at
-// versionCode 1 / versionName 0.1.0, with release signing not yet configured —
-// it has never been published to any store, and the string "com.whozyo.mechanic"
-// appears nowhere in whozyo_app. whozyo_app/docs/RELEASE.md:60-61 treats
-// net.whozyo.app as the Play identity this project will eventually ship under.
+// That identification was wrong about which repository this site is for. This
+// site describes WhoIsYourMechanic — clients, mechanics and service centres,
+// QR pairing, itemised receipts — which is the Flutter app in
+// `trustyourrepair/app`, applicationId `com.whozyo.mechanic`. `whozyo_app` is
+// a separate product sharing an owner and a domain.
 //
-// So both badges sent a visitor to a DIFFERENT product than the one this site
-// describes. Someone who tapped "Download on the App Store" installed a binary
-// that is not this app and cannot talk to this backend, while believing it was
-// WhoIsYourMechanic. There is additionally no iOS build at all: whozyo_app has
-// no ios/ directory and never has.
+// Restored 2026-08-18, with the checks written down in `lib/stores.ts` — read
+// that file before touching a store URL. The rule the removal was protecting
+// still stands: never link a listing that cannot be shown to be this app.
 //
-// If and when net.whozyo.app is listed, link it by that package id.
+// The links themselves are NOT here. Everything install-shaped goes through
+// /get, which redirects a phone to its own store and shows a QR to everyone
+// else. This component only says what the situation is.
 
 import { getDictionary, type Lang } from "@/lib/i18n";
 

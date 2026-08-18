@@ -166,8 +166,10 @@ body {
 }
 
 /* App store badge styles lived here. Removed with the badges themselves on
-   2026-08-12 — the app is on no store, so there is nothing to style. See
-   components/AppAvailability.tsx for why the badges went. */
+   2026-08-12, when the listings could not be shown to be this app. That was
+   settled on 2026-08-18 (see lib/stores.ts) and install links are back — but
+   as plain .btn-primary / .btn-ghost buttons on /get, not resurrected badge
+   artwork, so there is still nothing to style here. */
 
 /* ── Card ───────────────────────────────────────────────────────────────── */
 .card {
